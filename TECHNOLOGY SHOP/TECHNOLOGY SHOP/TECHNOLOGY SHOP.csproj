@@ -194,6 +194,7 @@
     <Content Include="Views\HangSanPham\Create.cshtml" />
     <Content Include="Views\HangSanPham\Edit.cshtml" />
     <Content Include="Views\HangSanPham\Delete.cshtml" />
+    <Content Include="Views\HangSanPham\ListHangSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
