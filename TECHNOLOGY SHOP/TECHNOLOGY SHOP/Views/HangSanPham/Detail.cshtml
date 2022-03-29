@@ -1,0 +1,59 @@
+﻿@model TECHNOLOGY_SHOP.Models.tb_HangSanPham
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CHI TIẾT</h2>
+
+<div>
+    <h4>Hãng sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Hãng sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenHang)
+        </dd>
+
+        <dt>
+            
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.logo)" alt="hinh thmbnail" style="width: 100px; height: 100px" />
+        </dd>
+
+        <dt>
+            Lĩnh vực kinh doanh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.linhVuc)
+        </dd>
+
+        <dt>
+            Quốc gia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quocGia)
+        </dd>
+
+        <dt>
+            Năm thành lập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.namThanhLap)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idHang }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

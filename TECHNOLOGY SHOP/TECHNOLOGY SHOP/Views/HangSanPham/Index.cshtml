@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TECHNOLOGY_SHOP.Models.tb_HangSanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DANH SÁCH HÃNG SẢN PHẨM</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Hãng sản phẩm
+        </th>
+        <th>
+            
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr >
+    <td style="line-height : 100px;">
+        <p style="margin:auto;">@Html.DisplayFor(modelItem => item.tenHang)</p>
+    </td>
+    <td >
+        <img src="@item.logo" alt="hinh thmbnail" style="width: 100px; height: 100px" />
+    </td>
+    <td style="line-height : 100px;">
+        @Html.ActionLink("Edit", "Edit", new { id = item.idHang }) |
+        @Html.ActionLink("Detail", "Detail", new { id = item.idHang }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.idHang })
+    </td>
+</tr>
+}
+
+</table>
