@@ -18,6 +18,13 @@ namespace TECHNOLOGY_SHOP.Controllers
             return View(all_hangsanpham);
         }
 
+        public ActionResult ListHangSanPham()
+        {
+            ViewBag.message = new SelectList(data.tb_HangSanPhams, "idHang", "tenHang");
+            return View("ListHangSanPham");
+        }
+
+
         public ActionResult Detail(int id)
         {
             var D_hang = data.tb_HangSanPhams.Where(p => p.idHang == id).First();
