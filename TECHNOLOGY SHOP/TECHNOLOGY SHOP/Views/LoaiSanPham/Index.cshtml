@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TECHNOLOGY_SHOP.Models.tb_LoaiSanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Danh sách loại sản phẩm</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th> Mã loại </th>
+        <th> Mã hãng </th>
+        <th> Tên loại </th>
+        <th> Trạng thái </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.idLoaiSP)</td>
+            <td>@Html.DisplayFor(modelItem => item.idHang)</td>
+            <td>@Html.DisplayFor(modelItem => item.tenLoaiSP)</td>
+            <td>@Html.DisplayFor(modelItem => item.trangThai)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idLoaiSP }) |
+                @Html.ActionLink("Detail", "Detail", new { id = item.idLoaiSP }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idLoaiSP })
+            </td>
+        </tr>
+    }
+</table>

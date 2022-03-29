@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BanHang" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=BanHang;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BanHangConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-2L89O05\HAUNGUYEN;Initial Catalog=BanHang;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BanHangConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tb_DonHang" Member="tb_DonHangs">
     <Type Name="tb_DonHang">
       <Column Name="idDonHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -19,6 +19,17 @@
       <Column Name="thanhTien" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Association Name="tb_DonHang_tb_DonHang_SanPham" Member="tb_DonHang" ThisKey="idDonHang" OtherKey="idDonHang" Type="tb_DonHang" IsForeignKey="true" />
       <Association Name="tb_SanPham_tb_DonHang_SanPham" Member="tb_SanPham" ThisKey="idSP" OtherKey="idSP" Type="tb_SanPham" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_HangSanPham" Member="tb_HangSanPhams">
+    <Type Name="tb_HangSanPham">
+      <Column Name="idHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tenHang" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="logo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="linhVuc" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="quocGia" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="namThanhLap" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tb_HangSanPham_tb_LoaiSanPham" Member="tb_LoaiSanPhams" ThisKey="idHang" OtherKey="idHang" Type="tb_LoaiSanPham" />
     </Type>
   </Table>
   <Table Name="dbo.tb_LoaiSanPham" Member="tb_LoaiSanPhams">
@@ -57,17 +68,6 @@
       <Column Name="eMail" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="laAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="tb_TaiKhoan_tb_DonHang" Member="tb_DonHangs" ThisKey="idTaiKhoan" OtherKey="idTaiKhoan" Type="tb_DonHang" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tb_HangSanPham" Member="tb_HangSanPhams">
-    <Type Name="tb_HangSanPham">
-      <Column Name="idHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="tenHang" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="logo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="linhVuc" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="quocGia" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="namThanhLap" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="tb_HangSanPham_tb_LoaiSanPham" Member="tb_LoaiSanPhams" ThisKey="idHang" OtherKey="idHang" Type="tb_LoaiSanPham" />
     </Type>
   </Table>
 </Database>
