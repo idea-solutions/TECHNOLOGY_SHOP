@@ -8,7 +8,7 @@
 <h2>DANH SÁCH HÃNG SẢN PHẨM</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo mới", "Create")
 </p>
 <table class="table">
     <tr>
@@ -30,9 +30,9 @@
         <img src="@item.logo" alt="hinh thmbnail" style="width: 100px; height: 100px" />
     </td>
     <td style="line-height : 100px;">
-        @Html.ActionLink("Edit", "Edit", new { id = item.idHang }) |
-        @Html.ActionLink("Detail", "Detail", new { id = item.idHang }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.idHang })
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.idHang }) |
+        @Html.ActionLink("Chỉ tiết", "Detail", new { id = item.idHang }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.idHang })
     </td>
 </tr>
 }

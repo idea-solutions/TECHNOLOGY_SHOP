@@ -17,7 +17,9 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.tenHang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Hãng sản phẩm
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.tenHang, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.tenHang, "", new { @class = "text-danger" })
@@ -25,15 +27,57 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.logo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Logo
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.logo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.logo, "", new { @class = "text-danger" })
+                <input type="file" name="fileUpload" id="fileUpload" accept="image/*" style="display:none;" />
+                <input type="button" id="btnUpload" value="Chọn" class="btn btn-success" />
+                <br />
+                <img src="~/Content/images/none.png" id="pictureUpload" style="width: 100px; height: 100px" />
+                @section upload
+                {
+                    <script>
+                        $(function () {
+                            $('#btnUpload').click(function () {
+                                $('#fileUpload').trigger('click');
+                            });
+                        });
+                        $('#fileUpload').change(function () {
+                            if (window.FormData !== undefined) {
+                                var fileUpload = $('#fileUpload').get(0);
+                                var files = fileUpload.files;
+                                var formData = new FormData();
+                                formData.append('file', files[0]);
+                                $.ajax(
+                                    {
+                                        type: 'POST',
+                                        url: '/HangSanPham/ProcessUpload',
+                                        contentType: false,
+                                        processData: false,
+                                        data: formData,
+                                        success: function (urlImage) {
+                                            $('#pictureUpload').attr('src', urlImage);
+                                            $('#logo').val(urlImage);
+                                        },
+                                        error: function (err) {
+                                            alert('Error ', err.statusText);
+
+                                        }
+                                    });
+                            }
+                        });
+                    </script>
+                }
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.linhVuc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Lĩnh vực kinh doanh
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.linhVuc, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.linhVuc, "", new { @class = "text-danger" })
@@ -41,7 +85,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.quocGia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Quốc gia
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.quocGia, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.quocGia, "", new { @class = "text-danger" })
@@ -49,7 +95,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.namThanhLap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">
+                Năm thành lập
+            </label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.namThanhLap, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.namThanhLap, "", new { @class = "text-danger" })
@@ -58,14 +106,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Thêm mới" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay về trang chủ", "Index")
 </div>
 
 @section Scripts {

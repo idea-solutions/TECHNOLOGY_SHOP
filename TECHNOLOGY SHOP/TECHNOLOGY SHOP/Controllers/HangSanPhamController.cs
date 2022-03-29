@@ -55,5 +55,63 @@ namespace TECHNOLOGY_SHOP.Controllers
             }
             return this.Create();
         }
+
+        public ActionResult Edit(int id)
+        {
+            var D_hang = data.tb_HangSanPhams.First(p => p.idHang == id);
+            return View(D_hang);
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            var s = data.tb_HangSanPhams.First(p => p.idHang == id);
+            var s_tenhang = collection["tenHang"];
+            var s_logo = collection["logo"];
+            var s_linhvuc = collection["linhVuc"];
+            var s_quocgia = collection["quocGia"];
+            var s_namthanhlap = Convert.ToInt32(collection["namThanhLap"]);
+            s.idHang = id;
+            if (string.IsNullOrEmpty(s_tenhang))
+            {
+                ViewData["Error"] = "Don't empty!";
+            }
+            else
+            {
+                s.tenHang = s_tenhang.ToString();
+                s.logo = s_logo.ToString();
+                s.linhVuc = s_linhvuc.ToString();
+                s.quocGia = s_quocgia.ToString();
+                s.namThanhLap = s_namthanhlap;
+                UpdateModel(s);
+                data.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            return this.Edit(id);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var D_hang = data.tb_HangSanPhams.First(p => p.idHang == id);
+            return View(D_hang);
+        }
+        [HttpPost]
+
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            var D_hang = data.tb_HangSanPhams.Where(m => m.idHang == id).First();
+            data.tb_HangSanPhams.DeleteOnSubmit(D_hang);
+            data.SubmitChanges();
+            return RedirectToAction("Index");
+        }
+
+        public string ProcessUpload(HttpPostedFileBase file)
+        {
+            if (file == null)
+            {
+                return "";
+            }
+            file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
+            return "/Content/images/" + file.FileName;
+        }
     }
 }

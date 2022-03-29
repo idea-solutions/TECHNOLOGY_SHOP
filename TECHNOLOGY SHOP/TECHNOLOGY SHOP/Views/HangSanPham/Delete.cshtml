@@ -1,12 +1,13 @@
 ﻿@model TECHNOLOGY_SHOP.Models.tb_HangSanPham
 
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CHI TIẾT</h2>
+<h2>XÓA THÔNG TIN</h2>
 
+<h3>Bạn có chắc chắn muốn xóa?</h3>
 <div>
     <h4>Hãng sản phẩm</h4>
     <hr />
@@ -20,7 +21,7 @@
         </dd>
 
         <dt>
-            
+
         </dt>
 
         <dd>
@@ -52,8 +53,13 @@
         </dd>
 
     </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xác nhận xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay về trang chủ", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.idHang }) |
-    @Html.ActionLink("Quay về trang chủ", "Index")
-</p>
