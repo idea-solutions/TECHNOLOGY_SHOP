@@ -1,0 +1,43 @@
+﻿@model TECHNOLOGY_SHOP.Models.tb_LoaiSanPham
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin</h2>
+
+<div>
+    <h4>Loại sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>ID Hãng:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idHang)
+        </dd>
+
+        <dt>
+            <label>Tên loại sản phẩm:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenLoaiSP)
+        </dd>
+
+        <dt>
+            <label>Trạng thái: </label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangThai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idLoaiSP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
