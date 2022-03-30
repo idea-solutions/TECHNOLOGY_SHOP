@@ -15,6 +15,7 @@ namespace TECHNOLOGY_SHOP.Controllers
         public ActionResult Index()
         {
             var all_hangsanpham = from hsp in data.tb_HangSanPhams select hsp;
+            ViewBag.list = all_hangsanpham;
             return View(all_hangsanpham);
         }
 
@@ -33,6 +34,7 @@ namespace TECHNOLOGY_SHOP.Controllers
 
         public ActionResult Create()
         {
+            SetViewBag();
             return View();
         }
 
@@ -61,6 +63,12 @@ namespace TECHNOLOGY_SHOP.Controllers
                 return RedirectToAction("Index");
             }
             return this.Create();
+        }
+
+        public void SetViewBag(int? idHang = null)
+        {
+            var down = new HangSanPhamList();
+            ViewBag.HangSanPhamID = new SelectList(down.ListAll(), "ID", "Name", idHang);
         }
 
         public ActionResult Edit(int id)

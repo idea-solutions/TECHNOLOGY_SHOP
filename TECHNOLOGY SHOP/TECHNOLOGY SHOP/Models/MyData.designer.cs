@@ -27,9 +27,10 @@ namespace TECHNOLOGY_SHOP.Models
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
-		
-    #region Extensibility Method Definitions
-    partial void OnCreated();
+        internal object tb_HangSanPham;
+
+        #region Extensibility Method Definitions
+        partial void OnCreated();
     partial void Inserttb_DonHang(tb_DonHang instance);
     partial void Updatetb_DonHang(tb_DonHang instance);
     partial void Deletetb_DonHang(tb_DonHang instance);
@@ -51,7 +52,7 @@ namespace TECHNOLOGY_SHOP.Models
     #endregion
 		
 		public MyDataDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BanHangConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BanHangConnectionString2"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -785,7 +786,7 @@ namespace TECHNOLOGY_SHOP.Models
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_LoaiSanPham")]
 	public partial class tb_LoaiSanPham : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-
+		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _idLoaiSP;
@@ -904,7 +905,7 @@ namespace TECHNOLOGY_SHOP.Models
 				}
 			}
 		}
-
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_LoaiSanPham_tb_SanPham", Storage="_tb_SanPhams", ThisKey="idLoaiSP", OtherKey="idLoaiSP")]
 		public EntitySet<tb_SanPham> tb_SanPhams
 		{

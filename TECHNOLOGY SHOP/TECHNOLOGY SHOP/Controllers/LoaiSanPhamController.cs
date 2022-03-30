@@ -14,8 +14,29 @@ namespace TECHNOLOGY_SHOP.Controllers
         public ActionResult Index()
         {
             var allLoai = from loai in data.tb_LoaiSanPhams select loai;
+            ViewBag.idHang = new SelectList(data.tb_HangSanPhams, "idHang", "tenHang");
+            ViewBag.tb_HangSanPhams = new SelectList(new List<tb_HangSanPham>(), "idHang", "idHang");
             return View(allLoai);
         }
+
+        public IList<tb_HangSanPham> GetHang(int id)
+        {
+            return data.tb_HangSanPhams.Where(m => m.idHang == id).ToList();
+        }
+
+        public JsonResult GetJsonState(int id)
+        {
+
+            var stateListt = this.GetHang(Convert.ToInt32(id));
+            var statesList = stateListt.Select(m => new SelectListItem()
+            {
+                Text = m.tenHang,
+                Value = m.idHang.ToString()
+            });
+
+            return Json(statesList, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Detail(int id)
         {
             var detailLoai = data.tb_LoaiSanPhams.Where(m => m.idLoaiSP == id).First();
@@ -25,12 +46,19 @@ namespace TECHNOLOGY_SHOP.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Create(FormCollection collection, tb_LoaiSanPham loai)
         {
+            bool c_trangThai;
             var c_idHang = collection["idHang"];
             var c_tenLoai = collection["tenLoaiSP"];
-            var c_trangThai = collection["trangThai"];
+            
+            if(collection["trangThai"]==null)
+                c_trangThai = Convert.ToBoolean(collection["trangThai"]);
+            else
+                c_trangThai = true;           
+
             if (string.IsNullOrEmpty(c_idHang))
             {
                 ViewData["Error"] = "Don't empty!";
@@ -39,7 +67,7 @@ namespace TECHNOLOGY_SHOP.Controllers
             {
                 loai.idHang = Convert.ToInt32(c_idHang);
                 loai.tenLoaiSP = c_tenLoai.ToString();
-                loai.trangThai = Convert.ToBoolean(c_trangThai);
+                loai.trangThai = c_trangThai;
                 data.tb_LoaiSanPhams.InsertOnSubmit(loai);
                 data.SubmitChanges();
                 return RedirectToAction("Index");
@@ -54,10 +82,14 @@ namespace TECHNOLOGY_SHOP.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
+            bool e_trangThai;
             var e_loaiSP = data.tb_LoaiSanPhams.First(m => m.idLoaiSP == id);
             var e_idHang = collection["idHang"];
             var e_tenLoai = collection["tenLoaiSP"];
-            var e_trangThai = Convert.ToBoolean(collection["trangThai"]);
+            if (collection["trangThai"] == null)
+                e_trangThai = Convert.ToBoolean(collection["trangThai"]);
+            else
+                e_trangThai = true;
             e_loaiSP.idLoaiSP = id;
             if (string.IsNullOrEmpty(e_tenLoai))
             {
