@@ -27,10 +27,9 @@ namespace TECHNOLOGY_SHOP.Models
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
-        internal object tb_HangSanPham;
-
-        #region Extensibility Method Definitions
-        partial void OnCreated();
+		
+    #region Extensibility Method Definitions
+    partial void OnCreated();
     partial void Inserttb_DonHang(tb_DonHang instance);
     partial void Updatetb_DonHang(tb_DonHang instance);
     partial void Deletetb_DonHang(tb_DonHang instance);
@@ -52,7 +51,7 @@ namespace TECHNOLOGY_SHOP.Models
     #endregion
 		
 		public MyDataDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BanHangConnectionString2"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BanHangConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
