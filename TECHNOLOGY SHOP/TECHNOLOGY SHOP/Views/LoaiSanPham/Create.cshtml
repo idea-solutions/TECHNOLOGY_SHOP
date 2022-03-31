@@ -18,9 +18,8 @@
             <div class="form-group">
 
                 <div class="col-md-10">
-                    <label>ID Hãng:</label>
-                    @Html.DropDownListFor(model => model.idHang, null, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.EditorFor(model => model.idHang, new { htmlAttributes = new { @class = "form-control" } })
+                    <label>Tên hãng:</label>
+                    @Html.DropDownList("tb_HangSanPham", ViewBag.idHang as SelectList, "--Chọn hãng--")
                     @Html.ValidationMessageFor(model => model.idHang, "", new { @class = "text-danger" })
                 </div>
             </div>
