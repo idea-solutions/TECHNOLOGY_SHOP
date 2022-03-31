@@ -57,7 +57,7 @@ namespace TECHNOLOGY_SHOP.Controllers
                 sp.moTa = c_mota.ToString();
                 sp.hinh = c_hinh.ToString();
                 sp.soLuongTon = Convert.ToInt32(c_soluongton);
-                sp.ngayCapNhat = Convert.ToDateTime(c_ngaycapnhat);
+                sp.ngayCapNhat = DateTime.Now;
 
                 data.tb_SanPhams.InsertOnSubmit(sp);
                 data.SubmitChanges();
@@ -102,7 +102,7 @@ namespace TECHNOLOGY_SHOP.Controllers
                 e_SP.moTa = e_mota.ToString();
                 e_SP.hinh = e_hinh.ToString();
                 e_SP.soLuongTon = Convert.ToInt32(e_soluongton);
-                e_SP.ngayCapNhat = Convert.ToDateTime(e_ngaycapnhat);
+                e_SP.ngayCapNhat = DateTime.Now;
                 UpdateModel(e_SP);
                 data.SubmitChanges();
                 return RedirectToAction("Index");
