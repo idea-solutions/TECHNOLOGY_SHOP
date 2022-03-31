@@ -21,7 +21,7 @@
         <td>@Html.DisplayFor(modelItem => item.idLoaiSP)</td>
         <td>@Html.DisplayFor(modelItem => item.tenLoaiSP)</td>
         <td>@Html.DisplayFor(modelItem => item.tb_HangSanPham.tenHang)</td>
-        <td>@Html.DisplayFor(modelItem => item.trangThai)</td>
+        <td>@String.Format("{0}", item.trangThai)</td>
         <td>
             @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.idLoaiSP }) |
             @Html.ActionLink("Chi tiết ", "Detail", new { id = item.idLoaiSP }) |

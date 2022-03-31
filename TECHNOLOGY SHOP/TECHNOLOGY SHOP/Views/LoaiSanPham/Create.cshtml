@@ -18,8 +18,8 @@
             <div class="form-group">
 
                 <div class="col-md-10">
-                    <label>Tên hãng:</label>
-                    @Html.DropDownList("tb_HangSanPham", ViewBag.idHang as SelectList, "--Chọn hãng--")
+                    <label>Hãng sản phẩm:</label>
+                    @Html.DropDownList("idHang", ViewBag.idHang as SelectList, "Chọn hãng sản phẩm", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.idHang, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -37,6 +37,7 @@
                 <div class="col-md-10">
                     <label>Trạng thái:</label>
                     <br />
+                    
                     @Html.EditorFor(model => model.trangThai)
                     @Html.ValidationMessageFor(model => model.trangThai, "", new { @class = "text-danger" })
                 </div>

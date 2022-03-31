@@ -34,9 +34,10 @@
                 @Html.EditorFor(model => model.logo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.logo, "", new { @class = "text-danger" })
                 <input type="file" name="fileUpload" id="fileUpload" accept="image/*" style="display:none;" />
+                <br />
                 <input type="button" id="btnUpload" value="Chọn" class="btn btn-success" />
                 <br />
-                <img src="~/Content/images/none.png" id="pictureUpload" style="width: 100px; height: 100px" />
+                <img src="~/Content/images/none.png" id="pictureUpload" style="width: 100px; height: 100px;" />
                 @section upload
                 {
                     <script>

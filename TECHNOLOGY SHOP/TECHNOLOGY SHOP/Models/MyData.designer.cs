@@ -20,9 +20,9 @@ namespace TECHNOLOGY_SHOP.Models
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BanHang")]
+    using System.ComponentModel.DataAnnotations;
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BanHang")]
 	public partial class MyDataDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -51,7 +51,7 @@ namespace TECHNOLOGY_SHOP.Models
     #endregion
 		
 		public MyDataDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BanHangConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BanHangConnectionString2"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -443,7 +443,7 @@ namespace TECHNOLOGY_SHOP.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_donGia", DbType="Money NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_donGia", DbType="Decimal(18,0) NOT NULL")]
 		public decimal donGia
 		{
 			get
@@ -463,7 +463,7 @@ namespace TECHNOLOGY_SHOP.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thanhTien", DbType="Money NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thanhTien", DbType="Decimal(18,0) NOT NULL")]
 		public decimal thanhTien
 		{
 			get
@@ -1128,7 +1128,9 @@ namespace TECHNOLOGY_SHOP.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_giaBan", DbType="Money NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_giaBan", DbType="Decimal(18,0) NOT NULL")]
+
+		[DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
 		public decimal giaBan
 		{
 			get
@@ -1209,6 +1211,7 @@ namespace TECHNOLOGY_SHOP.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngayCapNhat", DbType="DateTime NOT NULL")]
+		[DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}", ApplyFormatInEditMode =true)]
 		public System.DateTime ngayCapNhat
 		{
 			get

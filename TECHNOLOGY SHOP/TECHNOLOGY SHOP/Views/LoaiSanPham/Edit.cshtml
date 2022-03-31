@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CHỈNH SỬA</h2>
+<h2>CHỈNH SỬA THÔNG TIN</h2>
 
 @using (Html.BeginForm())
 {
@@ -19,8 +19,8 @@
 
         <div class="form-group">
             <div class="col-md-10">
-                <label>ID Hãng</label>
-                @Html.EditorFor(model => model.idHang, new { htmlAttributes = new { @class = "form-control" } })
+                <label>Hãng sản phẩm:</label>
+                @Html.DropDownListFor(model => model.idHang, ViewBag.lstHang as SelectList, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idHang, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,8 +44,8 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Lưu thay đổi" class="btn btn-default" />
+            <div class="col-md-10">
+                <input type="submit" value="Lưu thay đổi" class="btn btn-success" />
             </div>
         </div>
     </div>

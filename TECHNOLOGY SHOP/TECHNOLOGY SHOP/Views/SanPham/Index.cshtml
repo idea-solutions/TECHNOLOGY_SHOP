@@ -1,0 +1,74 @@
+﻿@model IEnumerable<TECHNOLOGY_SHOP.Models.tb_SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DANH SÁCH SẢN PHẨM</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+
+        </th>
+
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Loại sản Phẩm
+        </th>
+
+        <th>
+            Giá bán
+        </th>
+        <th>
+            Số lượng tồn
+        </th>
+        <th>
+            Ngày cập nhật
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        <img src="@Html.DisplayFor(modelItem => item.hinh)" alt="hinh thmbnail" style="width: 200px; height: 200px" />
+    </td>
+
+    <td style="line-height : 200px;">
+        @Html.DisplayFor(modelItem => item.tenSP)
+    </td>
+    <td style="line-height : 200px;">
+        @Html.DisplayFor(modelItem => item.tb_LoaiSanPham.tenLoaiSP)
+    </td>
+    <td style="line-height : 200px;">
+        @String.Format("{0:0,0}", item.giaBan)₫
+    </td>
+    <td style="line-height : 200px;">
+        @Html.DisplayFor(modelItem => item.soLuongTon)
+    </td>
+    <td style="line-height : 200px;">
+        @String.Format("{0:M/d/yyyy}", item.ngayCapNhat)
+
+    </td>
+    <td style="line-height : 200px;">
+        @String.Format("{0}", item.trangThai)
+    </td>
+    <td style="line-height : 200px;">
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.idSP }) |
+        @Html.ActionLink("Chi tiết", "Detail", new { id = item.idSP }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.idSP })
+    </td>
+</tr>
+}
+
+</table>

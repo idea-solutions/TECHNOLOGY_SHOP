@@ -39,7 +39,7 @@ namespace TECHNOLOGY_SHOP.Controllers
             else
                 c_trangThai = true;           
 
-            if (string.IsNullOrEmpty(c_idHang))
+            if (string.IsNullOrEmpty(c_tenLoai))
             {
                 ViewData["Error"] = "Don't empty!";
             }
@@ -56,6 +56,7 @@ namespace TECHNOLOGY_SHOP.Controllers
         }
         public ActionResult Edit(int id)
         {
+            ViewBag.lstHang = new SelectList(data.tb_HangSanPhams, "idHang", "tenHang");
             var e_loaiSP = data.tb_LoaiSanPhams.First(m => m.idLoaiSP == id);
             return View(e_loaiSP);
         }

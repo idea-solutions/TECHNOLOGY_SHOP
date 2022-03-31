@@ -12,15 +12,15 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            <label>ID Hãng:</label>
+            <label>Hãng sản phẩm</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idHang)
+            @Html.DisplayFor(model => model.tb_HangSanPham.tenHang)
         </dd>
 
         <dt>
-            <label>Tên loại sản phẩm:</label>
+            <label>Tên loại sản phẩm</label>
         </dt>
 
         <dd>
@@ -28,11 +28,11 @@
         </dd>
 
         <dt>
-            <label>Trạng thái: </label>
+            <label>Trạng thái</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.trangThai)
+            @String.Format("{0}", Model.trangThai)
         </dd>
 
     </dl>
