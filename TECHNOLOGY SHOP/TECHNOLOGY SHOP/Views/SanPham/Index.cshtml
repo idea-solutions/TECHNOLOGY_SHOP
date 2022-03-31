@@ -16,7 +16,7 @@
 
         </th>
 
-        <th>
+        <th style="width:250px">
             Tên sản phẩm
         </th>
         <th>
@@ -41,29 +41,36 @@
 @foreach (var item in Model) {
 <tr>
     <td>
-        <img src="@Html.DisplayFor(modelItem => item.hinh)" alt="hinh thmbnail" style="width: 200px; height: 200px" />
+        <img src="@Html.DisplayFor(modelItem => item.hinh)" alt="hinh thmbnail" style="width: 150px; height: 150px" />
     </td>
 
-    <td style="line-height : 200px;">
-        @Html.DisplayFor(modelItem => item.tenSP)
+    <td style="width:250px;">
+        <br /><br /><br />
+        <b>@Html.DisplayFor(modelItem => item.tenSP)</b>
     </td>
-    <td style="line-height : 200px;">
+    <td>
+        <br /><br /><br />
         @Html.DisplayFor(modelItem => item.tb_LoaiSanPham.tenLoaiSP)
     </td>
-    <td style="line-height : 200px;">
+    <td>
+        <br /><br /><br />
         @String.Format("{0:0,0}", item.giaBan)₫
     </td>
-    <td style="line-height : 200px;">
+    <td>
+        <br /><br /><br />
         @Html.DisplayFor(modelItem => item.soLuongTon)
     </td>
-    <td style="line-height : 200px;">
+    <td>
+        <br /><br /><br />
         @String.Format("{0:M/d/yyyy}", item.ngayCapNhat)
 
     </td>
-    <td style="line-height : 200px;">
+    <td>
+        <br /><br /><br />
         @String.Format("{0}", item.trangThai)
     </td>
-    <td style="line-height : 200px;">
+    <td>
+        <br /><br /><br />
         @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.idSP }) |
         @Html.ActionLink("Chi tiết", "Detail", new { id = item.idSP }) |
         @Html.ActionLink("Xóa", "Delete", new { id = item.idSP })
