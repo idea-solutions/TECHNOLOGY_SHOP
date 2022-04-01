@@ -7,7 +7,7 @@ using TECHNOLOGY_SHOP.Models;
 
 namespace TECHNOLOGY_SHOP.Controllers
 {
-    public class GiohangController : Controller
+    public class GioHangController : Controller
     {
         // GET: Giohang
         MyDataDataContext data = new MyDataDataContext();
@@ -117,6 +117,65 @@ namespace TECHNOLOGY_SHOP.Controllers
             List<Giohang> lstGiohang = Laygiohang();
             lstGiohang.Clear();
             return RedirectToAction("GioHang");
+        }
+
+        [HttpGet]
+        public ActionResult DatHang()
+        {
+            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            {
+                return RedirectToAction("DangNhap", "NguoiDung");
+            }
+            if (Session["Giohang"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            List<Giohang> lstGiohang = Laygiohang();
+            ViewBag.Tongsoluong = TongSoLuong();
+            ViewBag.Tongtien = TongTien();
+            ViewBag.Tongsoluongsanpham = TongSoLuongSanPham();
+            return View(lstGiohang);
+        }
+        public ActionResult DatHang(FormCollection collection)
+        {
+            tb_DonHang dh = new tb_DonHang();
+            tb_TaiKhoan kh = (tb_TaiKhoan)Session["TaiKhoan"];
+            tb_SanPham s = new tb_SanPham();
+
+            List<Giohang> gh = Laygiohang();
+            var ngaygiao = String.Format("{0:MM/đ/yyyy}", collection["ngayGiao"]);
+
+            dh.idTaiKhoan = kh.idTaiKhoan;
+            dh.ngayDat = DateTime.Now;
+            dh.ngayGiao = DateTime.Parse(ngaygiao);
+            dh.daGiao = false;
+            dh.daThanhToan = false;
+
+            data.tb_DonHangs.InsertOnSubmit(dh);
+            data.SubmitChanges();
+
+            foreach (var item in gh)
+            {
+                tb_DonHang_SanPham ctdh = new tb_DonHang_SanPham();
+                ctdh.idDonHang = dh.idDonHang;
+                ctdh.idSP = item.idSP;
+                ctdh.soLuong = item.iSoluong;
+                ctdh.donGia = (decimal)item.giaBan;
+                s = data.tb_SanPhams.Single(n => n.idSP == item.idSP);
+                s.soLuongTon -= ctdh.soLuong;
+                data.SubmitChanges();
+
+                data.tb_DonHang_SanPhams.InsertOnSubmit(ctdh);
+            }
+            data.SubmitChanges();
+            Session["Giohang"] = null;
+            return RedirectToAction("XacnhanDonhang", "GioHang");
+
+        }
+
+        public ActionResult XacnhanDonhang()
+        {
+            return View();
         }
     }
 }

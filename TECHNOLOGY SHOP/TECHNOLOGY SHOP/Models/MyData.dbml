@@ -1,26 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BanHang" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=BanHang;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BanHangConnectionString2" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tb_DonHang" Member="tb_DonHangs">
-    <Type Name="tb_DonHang">
-      <Column Name="idDonHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idTaiKhoan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ngayDat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ngayGiao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="tb_DonHang_tb_DonHang_SanPham" Member="tb_DonHang_SanPhams" ThisKey="idDonHang" OtherKey="idDonHang" Type="tb_DonHang_SanPham" />
-      <Association Name="tb_TaiKhoan_tb_DonHang" Member="tb_TaiKhoan" ThisKey="idTaiKhoan" OtherKey="idTaiKhoan" Type="tb_TaiKhoan" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tb_DonHang_SanPham" Member="tb_DonHang_SanPhams">
-    <Type Name="tb_DonHang_SanPham">
-      <Column Name="idDonHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="idSP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="soLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="donGia" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="thanhTien" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Association Name="tb_DonHang_tb_DonHang_SanPham" Member="tb_DonHang" ThisKey="idDonHang" OtherKey="idDonHang" Type="tb_DonHang" IsForeignKey="true" />
-      <Association Name="tb_SanPham_tb_DonHang_SanPham" Member="tb_SanPham" ThisKey="idSP" OtherKey="idSP" Type="tb_SanPham" IsForeignKey="true" />
-    </Type>
-  </Table>
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=BanHang;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BanHangConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tb_HangSanPham" Member="tb_HangSanPhams">
     <Type Name="tb_HangSanPham">
       <Column Name="idHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -64,10 +43,34 @@
       <Column Name="matKhau" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="hoTen" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="soDienThoai" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ngaySinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="diaChi" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="eMail" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="eMail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="laAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="tb_TaiKhoan_tb_DonHang" Member="tb_DonHangs" ThisKey="idTaiKhoan" OtherKey="idTaiKhoan" Type="tb_DonHang" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_DonHang" Member="tb_DonHangs">
+    <Type Name="tb_DonHang">
+      <Column Name="idDonHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idTaiKhoan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ngayDat" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ngayGiao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="daGiao" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="daThanhToan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="tb_DonHang_tb_DonHang_SanPham" Member="tb_DonHang_SanPhams" ThisKey="idDonHang" OtherKey="idDonHang" Type="tb_DonHang_SanPham" />
+      <Association Name="tb_TaiKhoan_tb_DonHang" Member="tb_TaiKhoan" ThisKey="idTaiKhoan" OtherKey="idTaiKhoan" Type="tb_TaiKhoan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_DonHang_SanPham" Member="tb_DonHang_SanPhams">
+    <Type Name="tb_DonHang_SanPham">
+      <Column Name="idDonHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idSP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="soLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="donGia" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="thanhTien" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="tb_DonHang_tb_DonHang_SanPham" Member="tb_DonHang" ThisKey="idDonHang" OtherKey="idDonHang" Type="tb_DonHang" IsForeignKey="true" />
+      <Association Name="tb_SanPham_tb_DonHang_SanPham" Member="tb_SanPham" ThisKey="idSP" OtherKey="idSP" Type="tb_SanPham" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
