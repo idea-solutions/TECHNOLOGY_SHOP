@@ -4,11 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Site.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    
+
+    <div class="navbar navbar-inverse navbar-fixed-top" style="display:grid">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -16,14 +20,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("TECHNOLOGY SHOP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="@Url.Action("Index","Home")"><img src="~/Content/images/SHOP.png" style="width:150px; height:50px; margin-right:4px" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("HÃNG SẢN PHẨM", "Index", "HangSanPham")</li>
-                    <li>@Html.ActionLink("LOẠI SẢN PHẨM", "Index", "LoaiSanPham")</li>
-                    <li>@Html.ActionLink("SẢN PHẨM", "Index", "SanPham")</li>
-                    <li>@Html.Partial("~/Views/GioHang/GioHangPartial.cshtml")</li>
+                    <li class="btnli">@Html.ActionLink("Hãng sản phẩm", "Index", "HangSanPham")</li>
+                    <li class="btnli">@Html.ActionLink("Loại sản phẩm", "Index", "LoaiSanPham")</li>
+                    <li class="btnli">@Html.ActionLink("Sản phẩm", "Index", "SanPham")</li>
+                    <li class="btnli">@Html.Partial("~/Views/GioHang/GioHangPartial.cshtml")</li>
                 </ul>
             </div>
         </div>
