@@ -152,6 +152,28 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bs\css\bootstrap-grid.css" />
+    <Content Include="Content\bs\css\bootstrap-grid.min.css" />
+    <Content Include="Content\bs\css\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bs\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bs\css\bootstrap-reboot.css" />
+    <Content Include="Content\bs\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\bs\css\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bs\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bs\css\bootstrap-utilities.css" />
+    <Content Include="Content\bs\css\bootstrap-utilities.min.css" />
+    <Content Include="Content\bs\css\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bs\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bs\css\bootstrap.css" />
+    <Content Include="Content\bs\css\bootstrap.min.css" />
+    <Content Include="Content\bs\css\bootstrap.rtl.css" />
+    <Content Include="Content\bs\css\bootstrap.rtl.min.css" />
+    <Content Include="Content\bs\js\bootstrap.bundle.js" />
+    <Content Include="Content\bs\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\bs\js\bootstrap.esm.js" />
+    <Content Include="Content\bs\js\bootstrap.esm.min.js" />
+    <Content Include="Content\bs\js\bootstrap.js" />
+    <Content Include="Content\bs\js\bootstrap.min.js" />
     <Content Include="Content\images\logo_apple.png" />
     <Content Include="Content\images\logo_cart.png" />
     <Content Include="Content\images\logo_dell.png" />
@@ -170,6 +192,28 @@
       <LastGenOutput>MyData.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\bs\css\bootstrap-grid.css.map" />
+    <Content Include="Content\bs\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bs\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bs\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bs\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\bs\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bs\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bs\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bs\css\bootstrap-utilities.css.map" />
+    <Content Include="Content\bs\css\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bs\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bs\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bs\css\bootstrap.css.map" />
+    <Content Include="Content\bs\css\bootstrap.min.css.map" />
+    <Content Include="Content\bs\css\bootstrap.rtl.css.map" />
+    <Content Include="Content\bs\css\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bs\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\bs\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\bs\js\bootstrap.esm.js.map" />
+    <Content Include="Content\bs\js\bootstrap.esm.min.js.map" />
+    <Content Include="Content\bs\js\bootstrap.js.map" />
+    <Content Include="Content\bs\js\bootstrap.min.js.map" />
     <None Include="Models\MyData.dbml.layout">
       <DependentUpon>MyData.dbml</DependentUpon>
     </None>
