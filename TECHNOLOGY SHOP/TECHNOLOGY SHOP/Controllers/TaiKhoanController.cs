@@ -143,13 +143,13 @@ namespace TECHNOLOGY_SHOP.Controllers
                 if (admin)
                 {
                     Session["tenDangNhap"] = tenDangNhap;
+                    return RedirectToAction("Index", "TaiKhoan");
                 }
                 else
                 {
-                    Session["_tenDangNhap"] = tenDangNhap;
+                    Session["Taikhoan"] = account;
+                    return RedirectToAction("Index", "Home");
                 }
-                Session["Taikhoan"] = account;
-                return RedirectToAction("Index", "Home");
             }
             else
             {
