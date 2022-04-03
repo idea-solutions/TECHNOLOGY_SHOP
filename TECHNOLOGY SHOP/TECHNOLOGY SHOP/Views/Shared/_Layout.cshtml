@@ -5,32 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
 
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/Site.css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="~/Content/bs/css/bootstrap.css" />
 </head>
 <body>
     
-
-    <div class="navbar navbar-inverse navbar-fixed-top" style="display:grid">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="@Url.Action("Index","Home")"><b>TECHNOLOGY</b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="@Url.Action("Index","Home")"><img src="~/Content/images/SHOP.png" style="width:150px; height:50px; margin-right:4px" /></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li>
+                            <form class="d-flex">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Tìm kiếm sản phẩm">
+                                <button class="btn btn-outline-success" type="submit">Tìm</button>
+                            </form>
+                        </li>
+
+                        <li class="nav-item">
+                            @Html.Partial("~/Views/GioHang/GiohangPartial.cshtml")
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="@Url.Action("Index","HangSanPham")">Trợ giúp</a>
+                        </li>
+                        <li class="nav-item">
+                            @Html.Partial("~/Views/TaiKhoan/LoginPartial.cshtml")
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="btnli">@Html.ActionLink("Hãng sản phẩm", "Index", "HangSanPham")</li>
-                    <li class="btnli">@Html.ActionLink("Loại sản phẩm", "Index", "LoaiSanPham")</li>
-                    <li class="btnli">@Html.ActionLink("Sản phẩm", "Index", "SanPham")</li>
-                    <li class="btnli">@Html.Partial("~/Views/GioHang/GioHangPartial.cshtml")</li>
-                </ul>
-            </div>
-        </div>
+        </nav>
     </div>
     <div class="container body-content">
         @RenderBody()
@@ -40,6 +48,9 @@
         </footer>
     </div>
 
+
+
+    <script type="text/javascript" src="~/Content/bs/js/bootstrap.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

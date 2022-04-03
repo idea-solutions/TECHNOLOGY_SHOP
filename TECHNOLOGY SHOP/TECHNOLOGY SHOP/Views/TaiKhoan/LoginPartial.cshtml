@@ -1,0 +1,29 @@
+﻿@using TECHNOLOGY_SHOP.Models
+@{
+    tb_TaiKhoan tk = (tb_TaiKhoan)Session["TaiKhoan"];
+}
+
+
+@if (Session["Taikhoan"] != null)
+{
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="@Url.Action("LichSuDatHang","GioHang", new {id = tk.idTaiKhoan})">Lịch sử đặt hàng</a>
+    </li>
+    <form class="d-flex nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="@Url.Action("Detail","TaiKhoan", new { id = tk.idTaiKhoan})" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            @tk.hoTen
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="@Url.Action("Detail","TaiKhoan", new { id = tk.idTaiKhoan})">Information</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </form>
+
+}
+else
+{
+    <a class="nav-link active" aria-current="page" href="@Url.Action("Login","TaiKhoan")">Đăng nhập</a>
+}
+

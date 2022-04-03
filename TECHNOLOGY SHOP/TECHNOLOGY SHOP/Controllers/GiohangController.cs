@@ -22,6 +22,67 @@ namespace TECHNOLOGY_SHOP.Controllers
             }
             return lstGiohang;
         }
+
+        public ActionResult LichSuDatHang(int id)
+        {
+            List<tb_DonHang> donhang = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id).ToList();
+            List<tb_DonHang> donhangT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.daGiao == false).ToList();
+            List<tb_DonHang> donhangTT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.daThanhToan == true).ToList();
+            List<tb_DonHang> donhangTTT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.daGiao == true && cc.daThanhToan == true).ToList();
+            List<tb_DonHang_SanPham> donhangsanpham = data.tb_DonHang_SanPhams.ToList();
+            List<tb_SanPham> sanpham = data.tb_SanPhams.ToList();
+
+            var lstAll = from e in donhang
+                                 join d in donhangsanpham on e.idDonHang equals d.idDonHang into table1
+                                 from d in table1.ToList()
+                                 join i in sanpham on d.idSP equals i.idSP into table2
+                                 from i in table2.ToList()
+                                 select new ViewModel
+                                 {
+                                     donhang = e,
+                                     donhangsanpham = d,
+                                     sanpham = i
+                                 };
+            var lstAllT = from e in donhangT
+                                 join d in donhangsanpham on e.idDonHang equals d.idDonHang into table1
+                                 from d in table1.ToList()
+                                 join i in sanpham on d.idSP equals i.idSP into table2
+                                 from i in table2.ToList()
+                                 select new ViewModel
+                                 {
+                                     donhang = e,
+                                     donhangsanpham = d,
+                                     sanpham = i
+                                 };
+            var lstAllTT = from e in donhangTT
+                          join d in donhangsanpham on e.idDonHang equals d.idDonHang into table1
+                          from d in table1.ToList()
+                          join i in sanpham on d.idSP equals i.idSP into table2
+                          from i in table2.ToList()
+                          select new ViewModel
+                          {
+                              donhang = e,
+                              donhangsanpham = d,
+                              sanpham = i
+                          };
+            var hoantat = from e in donhangTTT
+                        join d in donhangsanpham on e.idDonHang equals d.idDonHang into table1
+                        from d in table1.ToList()
+                        join i in sanpham on d.idSP equals i.idSP into table2
+                        from i in table2.ToList()
+                        select new ViewModel
+                        {
+                            donhang = e,
+                            donhangsanpham = d,
+                            sanpham = i
+                        };
+            ViewBag.lstAllT = lstAllT;
+            ViewBag.lstAllTT = lstAllTT;
+            ViewBag.lstAllhoantat = hoantat;
+            return View(lstAll);
+        }
+
+
         public ActionResult ThemGioHang(int id, string strURL)
         {
             List<Giohang> lstGiohang = Laygiohang();
@@ -124,7 +185,7 @@ namespace TECHNOLOGY_SHOP.Controllers
         {
             if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
             {
-                return RedirectToAction("DangNhap", "NguoiDung");
+                return RedirectToAction("Login", "TaiKhoan");
             }
             if (Session["Giohang"] == null)
             {
@@ -161,6 +222,7 @@ namespace TECHNOLOGY_SHOP.Controllers
                 ctdh.idSP = item.idSP;
                 ctdh.soLuong = item.iSoluong;
                 ctdh.donGia = (decimal)item.giaBan;
+                ctdh.thanhTien = (decimal)TongTien();
                 s = data.tb_SanPhams.Single(n => n.idSP == item.idSP);
                 s.soLuongTon -= ctdh.soLuong;
                 data.SubmitChanges();

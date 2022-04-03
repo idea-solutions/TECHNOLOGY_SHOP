@@ -11,7 +11,7 @@
     <tr>
         <th> Mã loại </th>
         <th> Tên loại </th>
-        <th> Hãng sản xuất </th>
+
         <th> Trạng thái </th>
         <th></th>
     </tr>
@@ -20,7 +20,7 @@
     <tr>
         <td>@Html.DisplayFor(modelItem => item.idLoaiSP)</td>
         <td>@Html.DisplayFor(modelItem => item.tenLoaiSP)</td>
-        <td>@Html.DisplayFor(modelItem => item.tb_HangSanPham.tenHang)</td>
+
         <td>@String.Format("{0}", item.trangThai)</td>
         <td>
             @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.idLoaiSP }) |

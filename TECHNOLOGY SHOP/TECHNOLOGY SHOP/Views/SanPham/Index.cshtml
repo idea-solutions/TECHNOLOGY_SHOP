@@ -22,6 +22,7 @@
         <th>
             Loại sản Phẩm
         </th>
+        <th> Hãng sản xuất </th>
 
         <th>
             Giá bán
@@ -45,32 +46,27 @@
     </td>
 
     <td style="width:250px;">
-        <br /><br /><br />
         <b>@Html.DisplayFor(modelItem => item.tenSP)</b>
     </td>
     <td>
-        <br /><br /><br />
         @Html.DisplayFor(modelItem => item.tb_LoaiSanPham.tenLoaiSP)
     </td>
+
+    <td>@Html.DisplayFor(modelItem => item.tb_HangSanPham.tenHang)</td>
     <td>
-        <br /><br /><br />
         @String.Format("{0:0,0}", item.giaBan)₫
     </td>
     <td>
-        <br /><br /><br />
         @Html.DisplayFor(modelItem => item.soLuongTon)
     </td>
     <td>
-        <br /><br /><br />
         @String.Format("{0:M/d/yyyy}", item.ngayCapNhat)
 
     </td>
     <td>
-        <br /><br /><br />
         @String.Format("{0}", item.trangThai)
     </td>
     <td>
-        <br /><br /><br />
         @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.idSP }) |
         @Html.ActionLink("Chi tiết", "Detail", new { id = item.idSP }) |
         @Html.ActionLink("Xóa", "Delete", new { id = item.idSP })

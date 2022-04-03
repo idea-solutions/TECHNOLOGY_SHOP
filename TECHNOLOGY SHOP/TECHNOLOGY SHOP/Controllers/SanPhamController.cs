@@ -23,6 +23,7 @@ namespace TECHNOLOGY_SHOP.Controllers
         }
         public ActionResult Create()
         {
+            ViewBag.lstHang = new SelectList(data.tb_HangSanPhams, "idHang", "tenHang");
             ViewBag.lstLoaiSP = new SelectList(data.tb_LoaiSanPhams, "idLoaiSP", "tenLoaiSP");
             return View();
         }
@@ -37,7 +38,7 @@ namespace TECHNOLOGY_SHOP.Controllers
             var c_mota = collection["moTa"];
             var c_hinh = collection["hinh"];
             var c_soluongton = collection["soLuongTon"];
-            var c_ngaycapnhat = collection["ngayCapNhat"];
+            var c_idhang = collection["idHang"];
 
             if (collection["trangThai"] == null)
                 c_trangThai = Convert.ToBoolean(collection["trangThai"]);
@@ -58,7 +59,7 @@ namespace TECHNOLOGY_SHOP.Controllers
                 sp.hinh = c_hinh.ToString();
                 sp.soLuongTon = Convert.ToInt32(c_soluongton);
                 sp.ngayCapNhat = DateTime.Now;
-
+                sp.idHang = Convert.ToInt32(c_idhang);
                 data.tb_SanPhams.InsertOnSubmit(sp);
                 data.SubmitChanges();
                 return RedirectToAction("Index");
@@ -67,6 +68,7 @@ namespace TECHNOLOGY_SHOP.Controllers
         }
         public ActionResult Edit(int id)
         {
+            ViewBag.lstHang = new SelectList(data.tb_HangSanPhams, "idHang", "tenHang");
             ViewBag.lstLoaiSP = new SelectList(data.tb_LoaiSanPhams, "idLoaiSP", "tenLoaiSP");
             var e_SP = data.tb_SanPhams.First(m => m.idSP == id);
             return View(e_SP);
@@ -83,6 +85,8 @@ namespace TECHNOLOGY_SHOP.Controllers
             var e_hinh = collection["hinh"];
             var e_soluongton = collection["soLuongTon"];
             var e_ngaycapnhat = collection["ngayCapNhat"];
+            var e_idhang = collection["idHang"];
+
             if (collection["trangThai"] == null)
                 e_trangThai = Convert.ToBoolean(collection["trangThai"]);
             else
@@ -103,6 +107,8 @@ namespace TECHNOLOGY_SHOP.Controllers
                 e_SP.hinh = e_hinh.ToString();
                 e_SP.soLuongTon = Convert.ToInt32(e_soluongton);
                 e_SP.ngayCapNhat = DateTime.Now;
+                e_SP.idHang = Convert.ToInt32(e_idhang);
+
                 UpdateModel(e_SP);
                 data.SubmitChanges();
                 return RedirectToAction("Index");

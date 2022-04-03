@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "LichSuDatHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LichSuDatHang</h2>
+
+<div class="container">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Tất cả</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Đang giao</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Đã thanh toán</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="hoantat-tab" data-bs-toggle="tab" data-bs-target="#hoantat" type="button" role="tab" aria-controls="hoantat" aria-selected="false">Hoàn tất</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="container-fluid py-4">
+                <h4 class="text-center text-uppercase">DAT HANG  List</h4>
+                <table class="table table-success table-striped">
+                    <thead class="bg-info text-white">
+                        <tr>
+                            <th style="color: black">Ngày đặt</th>
+                            <th style="color: black">Sản phẩm</th>
+                            <th style="color: black">Số lượng</th>
+                            <th style="color: black">Đơn giá</th>
+                            <th style="color: black">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@String.Format("{0:dd/MM/yyyy}", @item.donhang.ngayDat)</td>
+                                <td>@item.sanpham.tenSP</td>
+                                <td>@item.donhangsanpham.soLuong</td>
+                                <td>@String.Format("{0:0,0}", @item.donhangsanpham.donGia)₫ </td>
+                                <td>@String.Format("{0:0,0}", @item.donhangsanpham.thanhTien)₫ </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="container-fluid py-4">
+                <h4 class="text-center text-uppercase">Employee List</h4>
+                <table class="table table-success table-striped">
+                    <thead class="bg-info text-white">
+                        <tr>
+                            <th style="color: black">Ngày đặt</th>
+                            <th style="color: black">Sản phẩm</th>
+                            <th style="color: black">Số lượng</th>
+                            <th style="color: black">Đơn giá</th>
+                            <th style="color: black">Thành tiền</th>
+                            <th style="color: black">Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.lstAllT)
+                        {
+                            <tr>
+                                <td>@String.Format("{0:dd/MM/yyyy}", @item.donhang.ngayDat)</td>
+                                <td>@item.sanpham.tenSP</td>
+                                <td>@item.donhangsanpham.soLuong</td>
+                                <td>@String.Format("{0:0,0}", @item.donhangsanpham.donGia)₫ </td>
+                                <td>@String.Format("{0:0,0}", @item.donhangsanpham.thanhTien)₫ </td>
+                                <td>
+                                    @if (@item.donhang.daThanhToan == true)
+                                    {
+                                        <p>Đã thanh toán</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Chưa thanh toán</p>
+                                    }
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="container-fluid py-4">
+                <h4 class="text-center text-uppercase">Employee List</h4>
+                <table class="table table-success table-striped">
+                    <thead class="bg-info text-white">
+                        <tr>
+                            <th style="color: black">Ngày đặt</th>
+                            <th style="color: black">Sản phẩm</th>
+                            <th style="color: black">Số lượng</th>
+                            <th style="color: black">Đơn giá</th>
+                            <th style="color: black">Thành tiền</th>
+                            <th style="color: black">Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.lstAllTT)
+                        {
+                            <tr>
+                                <td>@String.Format("{0:dd/MM/yyyy}", @item.donhang.ngayDat)</td>
+                                <td>@item.sanpham.tenSP</td>
+                                <td>@item.donhangsanpham.soLuong</td>
+                                <td>@String.Format("{0:0,0}", @item.donhangsanpham.donGia)₫ </td>
+                                <td>@String.Format("{0:0,0}", @item.donhangsanpham.thanhTien)₫ </td>
+                                <td>
+                                    @if (@item.donhang.daGiao == true)
+                                    {
+                                        <p>Đã giao</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Chưa giao</p>
+                                    }
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            <div class="tab-pane fade" id="hoantat" role="tabpanel" aria-labelledby="hoantat-tab">
+                <div class="container-fluid py-4">
+                    <h4 class="text-center text-uppercase">Employee List</h4>
+                    <table class="table table-success table-striped">
+                        <thead class="bg-info text-white">
+                            <tr>
+                                <th style="color: black">Ngày đặt</th>
+                                <th style="color: black">Sản phẩm</th>
+                                <th style="color: black">Số lượng</th>
+                                <th style="color: black">Đơn giá</th>
+                                <th style="color: black">Thành tiền</th>
+                                <th style="color: black">Trạng thái</th>
+                                <th style="color: black">Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.lstAllhoantat)
+                            {
+                                <tr>
+                                    <td>@String.Format("{0:dd/MM/yyyy}", @item.donhang.ngayDat)</td>
+                                    <td>@item.sanpham.tenSP</td>
+                                    <td>@item.donhangsanpham.soLuong</td>
+                                    <td>@String.Format("{0:0,0}", @item.donhangsanpham.donGia)₫ </td>
+                                    <td>@String.Format("{0:0,0}", @item.donhangsanpham.thanhTien)₫ </td>
+                                    <td>
+                                        @if (@item.donhang.daGiao == true)
+                                        {
+                                            <p>Đã giao</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Chưa giao</p>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (@item.donhang.daThanhToan == true)
+                                        {
+                                            <p>Đã thanh toán</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Chưa thanh toán</p>
+                                        }
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+    

@@ -45,7 +45,6 @@ namespace TECHNOLOGY_SHOP.Controllers
             }
             else
             {
-                loai.idHang = Convert.ToInt32(c_idHang);
                 loai.tenLoaiSP = c_tenLoai.ToString();
                 loai.trangThai = c_trangThai;
                 data.tb_LoaiSanPhams.InsertOnSubmit(loai);
@@ -78,7 +77,6 @@ namespace TECHNOLOGY_SHOP.Controllers
             }
             else
             {
-                e_loaiSP.idHang = Convert.ToInt32(e_idHang);
                 e_loaiSP.tenLoaiSP = e_tenLoai;
                 e_loaiSP.trangThai = e_trangThai;
                 UpdateModel(e_loaiSP);

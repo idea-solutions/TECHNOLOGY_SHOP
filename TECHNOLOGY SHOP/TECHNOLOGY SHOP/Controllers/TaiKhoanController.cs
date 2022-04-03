@@ -60,33 +60,43 @@ namespace TECHNOLOGY_SHOP.Controllers
         {
             var tk_tendangnhap = collection["tenDangNhap"];
             var tk_matkhau = collection["matKhau"];
+            var tk_matkhauXacNhan = collection["matKhauXacNhan"];
             var tk_hoten = collection["hoTen"];
             var tk_sodienthoai = collection["soDienThoai"];
             var tk_diachi = collection["diaChi"];
             var tk_email = collection["eMail"];
+            var tk_ngaysinh = String.Format("{0:MM/dd/yyyy}", collection["ngaySinh"]);
 
 
 
-
-            if (string.IsNullOrEmpty(tk_tendangnhap))
+            if (string.IsNullOrEmpty(tk_matkhauXacNhan))
             {
                 ViewData["Error"] = "Don't empty!";
             }
             else
             {
-                tk.tenDangNhap = tk_tendangnhap.ToString();
-                tk.matKhau = tk_matkhau.ToString();
-                tk.hoTen = tk_hoten.ToString();
-                tk.soDienThoai = tk_sodienthoai.ToString();
-                tk.diaChi = tk_diachi.ToString();
-                tk.eMail = tk_email.ToString();
-                tk.laAdmin = false;
+                if(!tk_matkhau.Equals(tk_matkhauXacNhan))
+                {
+                    ViewData["Error"] = "Don't empty!";
+                }
+                else
+                {
+                    tk.tenDangNhap = tk_tendangnhap.ToString();
+                    tk.matKhau = tk_matkhau.ToString();
+                    tk.hoTen = tk_hoten.ToString();
+                    tk.soDienThoai = tk_sodienthoai.ToString();
+                    tk.diaChi = tk_diachi.ToString();
+                    tk.eMail = tk_email.ToString();
+                    tk.ngaySinh = DateTime.Parse(tk_ngaysinh);
+                    tk.laAdmin = false;
 
+                    if (String.IsNullOrEmpty(tk_matkhauXacNhan))
 
-
-                data.tb_TaiKhoans.InsertOnSubmit(tk);
-                data.SubmitChanges();
-                return RedirectToAction("Index");
+                        data.tb_TaiKhoans.InsertOnSubmit(tk);
+                    data.SubmitChanges();
+                    return RedirectToAction("Index");
+                }
+                
             }
             return this.Create();
         }
@@ -115,7 +125,7 @@ namespace TECHNOLOGY_SHOP.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
@@ -126,27 +136,37 @@ namespace TECHNOLOGY_SHOP.Controllers
         public ActionResult Login(string tenDangNhap, string matKhau)
         {
             bool result = data.tb_TaiKhoans.Where(a => a.tenDangNhap == tenDangNhap && a.matKhau == matKhau).Count() > 0;
-            var account = data.tb_TaiKhoans.FirstOrDefault(a => a.tenDangNhap == tenDangNhap && a.matKhau == matKhau);
-            if (result)
+            tb_TaiKhoan account = data.tb_TaiKhoans.FirstOrDefault(a => a.tenDangNhap == tenDangNhap && a.matKhau == matKhau);
+            if (account != null)
             {
                 var admin = data.tb_TaiKhoans.Where(a => a.laAdmin == true && a.matKhau == matKhau && a.tenDangNhap == tenDangNhap).Count() > 0;
                 if (admin)
                 {
                     Session["tenDangNhap"] = tenDangNhap;
-                    return RedirectToAction("Index", "TaiKhoan");
                 }
                 else
                 {
                     Session["_tenDangNhap"] = tenDangNhap;
-                    return RedirectToAction("Index", "Home");
                 }
-
+                Session["Taikhoan"] = account;
+                return RedirectToAction("Index", "Home");
             }
             else
             {
                 ViewBag.ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng!";
                 return View();
             }
+        }
+
+        public ActionResult LoginPartial()
+        {
+            if (Session["Taikhoan"] != null)
+            {
+                tb_TaiKhoan tk = (tb_TaiKhoan)Session["Taikhoan"];
+                ViewBag.username = tk.hoTen;
+
+            }
+            return PartialView();
         }
 
         public ActionResult Logout()
@@ -185,7 +205,6 @@ namespace TECHNOLOGY_SHOP.Controllers
                 data.SubmitChanges();
                 return RedirectToAction("Login", "TaiKhoan");
             }
-            return RedirectToAction("Login", "TaiKhoan");
         }
     }
 }
