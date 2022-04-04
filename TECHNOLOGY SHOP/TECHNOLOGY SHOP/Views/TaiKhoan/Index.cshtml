@@ -7,9 +7,7 @@
 
 <h2 style="text-align:center">DANH SÁCH TÀI KHOẢN</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -61,9 +59,9 @@
                 @Html.DisplayFor(modelItem => item.laAdmin)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idTaiKhoan }) |
-                @Html.ActionLink("Details", "Detail", new { id = item.idTaiKhoan }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idTaiKhoan })
+
+                @Html.ActionLink("Chi tiết", "Detail", new { id = item.idTaiKhoan }) |
+                @Html.ActionLink("Xoá", "Delete", new { id = item.idTaiKhoan })
             </td>
         </tr>
     }

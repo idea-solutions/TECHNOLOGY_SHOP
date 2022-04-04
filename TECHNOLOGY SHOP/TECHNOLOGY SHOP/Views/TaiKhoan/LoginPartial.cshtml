@@ -14,10 +14,13 @@
             @tk.hoTen
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="@Url.Action("Detail","TaiKhoan", new { id = tk.idTaiKhoan})">Information</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+                <p class="preview-subject mb-1">
+                    <a class="dropdown-item" href="@Url.Action("Logout", "TaiKhoan")">Đăng Xuất</a>
+                </p>
+            </li>
         </ul>
     </form>
 
