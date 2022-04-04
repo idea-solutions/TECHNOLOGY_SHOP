@@ -26,7 +26,7 @@ namespace TECHNOLOGY_SHOP.Controllers
         public ActionResult LichSuDatHang(int id)
         {
             List<tb_DonHang> donhang = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id).ToList();
-            List<tb_DonHang> donhangT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.trangThai == "Đã giao").ToList();
+            List<tb_DonHang> donhangT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.trangThai == "Chờ xử lý").ToList();
             List<tb_DonHang> donhangTT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.daThanhToan == true).ToList();
             List<tb_DonHang> donhangTTT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.trangThai == "Đã giao" && cc.daThanhToan == true).ToList();
             List<tb_DonHang_SanPham> donhangsanpham = data.tb_DonHang_SanPhams.ToList();
@@ -82,6 +82,20 @@ namespace TECHNOLOGY_SHOP.Controllers
             return View(lstAll);
         }
 
+        public ActionResult danhGia(int idSP, int idDH, int sao)
+        {
+            var donHang = data.tb_DonHang_SanPhams.First(m => m.idDonHang == idDH && m.idSP == idSP);
+            var sanpham = data.tb_SanPhams.First(m => m.idSP == idSP);
+            sanpham.danhGia = (sanpham.soNguoiDanhGia * sanpham.danhGia + sao) / (sanpham.soNguoiDanhGia + 1);
+            sanpham.soNguoiDanhGia += 1;
+            
+            donHang.danhGia = sao;
+            UpdateModel(donHang);
+            UpdateModel(sanpham);
+            data.SubmitChanges();
+            tb_TaiKhoan tk = (tb_TaiKhoan)Session["Taikhoan"];
+            return RedirectToAction("LichSuDatHang/"+tk.idTaiKhoan);
+        }
 
         public ActionResult ThemGioHang(int id, string strURL)
         {

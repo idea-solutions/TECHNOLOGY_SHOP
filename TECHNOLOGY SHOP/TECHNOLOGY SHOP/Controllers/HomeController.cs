@@ -43,20 +43,18 @@ namespace TECHNOLOGY_SHOP.Controllers
             return View(sanpham);
         }
 
-        public ActionResult SanPhamByTen(string id)
+        public ActionResult SanPhamByTen(string idSPP)
         {
             var links = from l in data.tb_SanPhams
                         select l;
 
-            if (!String.IsNullOrEmpty(id))
+            if (!String.IsNullOrEmpty(idSPP))
             {
-                links = links.Where(s => s.tenSP.Contains(id));
+                links = links.Where(s => s.tenSP.Contains(idSPP));
             }
-            var sanpham = from sp in data.tb_SanPhams where sp.tenSP.Contains("pro") select sp;
+            var sanpham = from sp in data.tb_SanPhams where sp.tenSP.Contains(idSPP) select sp;
             ViewBag.sanpham = sanpham;
             return View(links);
-
         }
-
     }
 }

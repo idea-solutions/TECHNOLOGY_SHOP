@@ -60,6 +60,8 @@ namespace TECHNOLOGY_SHOP.Controllers
                 sp.soLuongTon = Convert.ToInt32(c_soluongton);
                 sp.ngayCapNhat = DateTime.Now;
                 sp.idHang = Convert.ToInt32(c_idhang);
+                sp.danhGia = 0;
+                sp.soNguoiDanhGia = 0;
                 data.tb_SanPhams.InsertOnSubmit(sp);
                 data.SubmitChanges();
                 return RedirectToAction("Index");

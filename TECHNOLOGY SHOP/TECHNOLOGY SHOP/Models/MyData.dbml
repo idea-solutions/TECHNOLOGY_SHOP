@@ -1,16 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BanHang" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=BanHang;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BanHangConnectionString2" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tb_DonHang_SanPham" Member="tb_DonHang_SanPhams">
-    <Type Name="tb_DonHang_SanPham">
-      <Column Name="idDonHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="idSP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="soLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="donGia" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="thanhTien" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Association Name="tb_DonHang_tb_DonHang_SanPham" Member="tb_DonHang" ThisKey="idDonHang" OtherKey="idDonHang" Type="tb_DonHang" IsForeignKey="true" />
-      <Association Name="tb_SanPham_tb_DonHang_SanPham" Member="tb_SanPham" ThisKey="idSP" OtherKey="idSP" Type="tb_SanPham" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tb_HangSanPham" Member="tb_HangSanPhams">
     <Type Name="tb_HangSanPham">
       <Column Name="idHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -77,6 +66,18 @@
       <Association Name="tb_SanPham_tb_DonHang_SanPham" Member="tb_DonHang_SanPhams" ThisKey="idSP" OtherKey="idSP" Type="tb_DonHang_SanPham" />
       <Association Name="tb_LoaiSanPham_tb_SanPham" Member="tb_LoaiSanPham" ThisKey="idLoaiSP" OtherKey="idLoaiSP" Type="tb_LoaiSanPham" IsForeignKey="true" />
       <Association Name="tb_HangSanPham_tb_SanPham" Member="tb_HangSanPham" ThisKey="idHang" OtherKey="idHang" Type="tb_HangSanPham" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_DonHang_SanPham" Member="tb_DonHang_SanPhams">
+    <Type Name="tb_DonHang_SanPham">
+      <Column Name="idDonHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idSP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="soLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="donGia" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="thanhTien" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="danhGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tb_DonHang_tb_DonHang_SanPham" Member="tb_DonHang" ThisKey="idDonHang" OtherKey="idDonHang" Type="tb_DonHang" IsForeignKey="true" />
+      <Association Name="tb_SanPham_tb_DonHang_SanPham" Member="tb_SanPham" ThisKey="idSP" OtherKey="idSP" Type="tb_SanPham" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
