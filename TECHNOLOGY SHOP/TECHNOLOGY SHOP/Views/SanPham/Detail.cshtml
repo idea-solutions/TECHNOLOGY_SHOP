@@ -4,53 +4,117 @@
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>THÔNG TIN</h2>
-
-<div style="display:flex">
-
-    <div style="margin: 20px">
-        <br /><br /><br />
-        <img src="@Html.DisplayFor(model => model.hinh)" alt="hinh thmbnail" style="width: 400px; height: 400px" />
-    </div>
-
-    <div>
-        <h4>Sản phẩm</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                <label>Hãng sản phẩm</label>
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.tb_HangSanPham.tenHang)
-            </dd>
-            <dt>Loại sản phẩm</dt>
-            <dd>@Html.DisplayFor(model => model.tb_LoaiSanPham.tenLoaiSP)</dd>
-
-            <dt>Tên sản phẩm</dt>
-            <dd>@Html.DisplayFor(model => model.tenSP)</dd>
-
-            <dt>Trạng thái</dt>
-            <dd>@String.Format("{0}", Model.trangThai)</dd>
-
-            <dt>Giá bán</dt>
-            <dd>@String.Format("{0:0,0}", Model.giaBan)₫</dd>
-
-            <dt>Mô tả</dt>
-            <dd style="width: 400px; text-align: justify">@Html.DisplayFor(model => model.moTa)</dd>
-
-            <dt>Số lượng tồn</dt>
-            <dd>@Html.DisplayFor(model => model.soLuongTon)</dd>
-
-            <dt>Ngày cập nhật</dt>
-            <dd>@String.Format("{0:M/d/yyyy}", Model.ngayCapNhat)</dd>
-
-        </dl>
+<br />
+<h4>
+    Thông tin sản phẩm - @Html.DisplayFor(model => model.tenSP)
+</h4>
+<br />
+<div class="container">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <img src="@Html.DisplayFor(model => model.h1)" alt="hinh thmbnail" style="width: 716px; height: 400px" />
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <img src="@Html.DisplayFor(model => model.h2)" alt="hinh thmbnail" style="width: 716px; height: 400px" />
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <img src="@Html.DisplayFor(model => model.h3)" alt="hinh thmbnail" style="width: 716px; height: 400px" />
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <img src="@Html.DisplayFor(model => model.h4)" alt="hinh thmbnail" style="width: 716px; height: 400px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </div>
 
-<p>
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.idSP }) |
-    @Html.ActionLink("Trở về trang chủ", "Index")
-</p>
+<br />
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 col-md-4">
+            <div style="margin: 20px">
+                <br />
+                <img src="@Html.DisplayFor(model => model.hinh)" alt="hinh thmbnail" style="width: 400px; height: 400px" />
+            </div>
+        </div>
+        <div class="col-6 col-md-2">
+            <div>
+                <h4>Sản phẩm</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        <label>Hãng sản phẩm</label>
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.tb_HangSanPham.tenHang)
+                    </dd>
+                    <dt>Loại sản phẩm</dt>
+                    <dd>@Html.DisplayFor(model => model.tb_LoaiSanPham.tenLoaiSP)</dd>
+
+                    <dt>Trạng thái</dt>
+                    <dd>@String.Format("{0}", Model.trangThai)</dd>
+
+                    <dt>Giá bán</dt>
+                    <dd>@String.Format("{0:0,0}", Model.giaBan)₫</dd>
+
+                    <dt>Số lượng tồn</dt>
+                    <dd>@Html.DisplayFor(model => model.soLuongTon)</dd>
+
+                    <dt>Ngày cập nhật</dt>
+                    <dd>@String.Format("{0:M/d/yyyy}", Model.ngayCapNhat)</dd>
+
+                </dl>
+            </div>
+        </div>
+        <div class="col-6 col-md-4">
+            <div style="margin-left:3rem">
+                <h4>Mô tả</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dd style="width: 400px; text-align: justify">@Html.DisplayFor(model => model.moTa)</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="display:flex">
+
+
+
+
+</div>

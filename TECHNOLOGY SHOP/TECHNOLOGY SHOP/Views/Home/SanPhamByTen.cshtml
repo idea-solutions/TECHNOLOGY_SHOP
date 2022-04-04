@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TECHNOLOGY_SHOP.Models.tb_SanPham>
+
+@{
+    ViewBag.Title = "SanPhamByTen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="text-align:center; margin-top:2rem" class="alert alert-primary" role="alert">
+    <h5>
+        Sản phẩm
+    </h5>
+</div>
+
+<div class="container">
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        @foreach (var item in Model)
+        {
+
+            <div class="col ">
+                <div class="card" style="border:none">
+                    <div class="panel-body">
+                        <a style="text-decoration: none;" href="@Url.Action("Detail", "SanPham", new {id =  item.idSP})">
+                            <p><img class="card-img-top" src="@item.hinh" alt=" " style="width: 240px; height: 240px"></p>
+                        </a>
+                    </div>
+                    <div class="card-body int-box">
+                        <div style=" height: 40px;">
+                            <b style="font-size: 14px;">@item.tenSP</b>
+                        </div>
+                        <br />
+                        <b style="font-size: 14px; color: red">@String.Format("{0:0,0}", item.giaBan)₫</b>
+                        <hr />
+                        <a href="@Url.Action("ThemGioHang", "GioHang",new { @id = item.idSP, @strURL = Request.Url.ToString() })" class="btn btn-primary">Đặt mua</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

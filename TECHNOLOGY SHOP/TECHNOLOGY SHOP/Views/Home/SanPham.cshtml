@@ -5,34 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>SanPham</h2>
+<div style="text-align:center; margin-top:2rem" class="alert alert-primary" role="alert">
+    <h5>
+        Sản phẩm
+    </h5>
+</div>
 
-<div class="row">
-    @foreach (var item in ViewBag.loaisanphamAll)
-    {
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="width:260px">
-            <div class="panel panel-default" style="border-bottom-right-radius: 1rem; border-bottom-left-radius: 1rem; border-top-right-radius: 1rem; border-top-left-radius: 1rem; ">
+<div class="container">
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        @foreach (var item in ViewBag.loaisanphamAll)
+        {
 
-                <div class="panel-body">
-                    <p><img src="@item.hinh" alt="hinh thumnail" style="width: 200px; height: 200px"></p>
-                    <div style=" height: 40px;">
-                        <b style="font-size: 14px;">@item.tenSP</b>
+            <div class="col ">
+                <div class="card" style="border:none">
+                    <div class="panel-body">
+                        <a style="text-decoration: none;" href="@Url.Action("Detail", "SanPham", new {id =  item.idSP})">
+                            <p><img class="card-img-top" src="@item.hinh" alt=" " style="width: 240px; height: 240px"></p>
+                        </a>
                     </div>
-                    <br />
-                    <b style="font-size: 14px; color: red">@String.Format("{0:0,0}", item.giaBan)₫</b>
-
-                </div>
-                <div class="panel-footer clearfix" style="border-bottom-right-radius: 1rem; border-bottom-left-radius: 1rem;">
-                    <div class="pull-left">
-                        <a class="btn btn-success" href="@Url.Action("ThemGioHang", "GioHang",new { @id = item.idSP, @strURL = Request.Url.ToString() })">Đặt mua</a>
-                        @Html.ActionLink("Thông tin...", "Detail", "SanPham", new { id = item.idSP }, new { @class = "btn btn-default" })
-
-                        <div class="DatMua">
-
+                    <div class="card-body int-box">
+                        <div style=" height: 40px;">
+                            <b style="font-size: 14px;">@item.tenSP</b>
                         </div>
+                        <br />
+                        <b style="font-size: 14px; color: red">@String.Format("{0:0,0}", item.giaBan)₫</b>
+                        <hr />
+                        <a href="@Url.Action("ThemGioHang", "GioHang",new { @id = item.idSP, @strURL = Request.Url.ToString() })" class="btn btn-primary">Đặt mua</a>
                     </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>

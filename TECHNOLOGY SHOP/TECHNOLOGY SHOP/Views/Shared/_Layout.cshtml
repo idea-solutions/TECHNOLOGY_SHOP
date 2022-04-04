@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/bs/css/bootstrap.css" />
 </head>
 <body>
-    
+
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -19,16 +19,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Tìm kiếm sản phẩm">
-                                <button class="btn btn-outline-success" type="submit">Tìm</button>
-                            </form>
+                            @using (Html.BeginForm("SanPhamByTen", "Home", FormMethod.Get)) // -- phần thay đổi
+                            {
+                            <div style="display:flex">
+                                @Html.Editor("id", new { htmlAttributes = new {@placeholder = "Nhập tên sản phẩm", @class= "form-control me-2", @tyle = "search" } })
+                                <input style="margin-left:8px" type="submit" class="btn btn-outline-success" value="Tìm" />
+                            </div>
+                            }
+
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item" style="margin-left:1rem">
                             @Html.Partial("~/Views/GioHang/GiohangPartial.cshtml")
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="@Url.Action("Index","HangSanPham")">Trợ giúp</a>
                         </li>
@@ -44,7 +48,60 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p>
+                            <b>Thông tin</b>
+                        </p>
+                        <p>
+                            <a href="" style="text-decoration:none" class="link-secondary">Giới thiệu về chuỗi cửa hàng TECHNOLOGY SHOP</a>
+                        </p>
+                        <p>
+                            <a href="" style="text-decoration:none" class="link-secondary">Cộng tác bán hàng cùng chúng tôi</a>
+                        </p>
+                        <p>
+                            <a href="" style="text-decoration:none" class="link-secondary">Chính sách bán hàng, đổi trả</a>
+                        </p>
+                        <p>
+                            <a href="" style="text-decoration:none" class="link-secondary">Gửi góp ý, khiếu nại</a>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <p>
+                                <b>Liên hệ hỗ trợ</b>(gọi miễn phí)
+                            </p>
+                            <p>Gọi mua: 0964.123.123 (7:30 - 22:00)</p>
+                            <p>Kỹ thuật: 0964.124.124 (7:30 - 22:00)</p>
+                            <p>Khiếu nại: 0964.125.125 (9:00 - 18:00)</p>
+                            <p>Bảo hành: 0964.126.126 (9:00 - 18:00)</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <p>
+                                <b>Địa chỉ mua hàng</b>
+                            </p>
+                            <p>123 Đ.Nguyễn Văn A, Phường 1, Q.1, Thành phố Hồ Chí Minh</p>
+                            <p>123 Đ.Nguyễn Văn A, Phường 1, Q.Thanh Xuân, Hà Nội</p>
+                            <p>123 Đ.Nguyễn Văn A, Phường 1, Sơn Trà, Đà Nẵng</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p>
+                            <b>Truyền thông</b>
+                        </p>
+                        <a href="https://www.facebook.com/" style="text-decoration:none" target="_blank" class="link-secondary"><img src="~/Content/images/logo_fb.png" style="height:2rem; width:2rem" /><b> facebook.com/technologyshop123</b></a>
+                        <hr />
+                        <a href="https://mail.google.com/" style="text-decoration:none" target="_blank" class="link-secondary"><img src="~/Content/images/logo_gg.png" style="height:2rem; width:2rem" /><b> cskh.tnlg@gmail.com</b></a>
+                        <hr />
+                        <a href="https://www.instagram.com/" style="text-decoration:none" target="_blank" class="link-secondary"><img src="~/Content/images/logo_it.png" style="height:2rem; width:2rem" /><b> @@technology123</b></a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <p>&copy; @DateTime.Now.Year - Công ty Cổ phần Thương mại TECHNOLOGY. GPDKKD:abc12300000000000000 do sở KH & ĐT TP.HCM cấp ngày 00/00/0000 Địa chỉ: 123 Đ.Nguyễn Văn A, Phường 1, Q.1, Thành phố Hồ Chí Minh Điện thoại: 0964.123.123 Email: cskh.tnlg@gmail.com</p>
         </footer>
     </div>
 
@@ -56,4 +113,6 @@
     @RenderSection("scripts", required: false)
     @RenderSection("upload", required: false)
 </body>
-</html>
+
+
+</html >

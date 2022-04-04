@@ -26,9 +26,9 @@ namespace TECHNOLOGY_SHOP.Controllers
         public ActionResult LichSuDatHang(int id)
         {
             List<tb_DonHang> donhang = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id).ToList();
-            List<tb_DonHang> donhangT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.daGiao == false).ToList();
+            List<tb_DonHang> donhangT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.trangThai == "Đã giao").ToList();
             List<tb_DonHang> donhangTT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.daThanhToan == true).ToList();
-            List<tb_DonHang> donhangTTT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.daGiao == true && cc.daThanhToan == true).ToList();
+            List<tb_DonHang> donhangTTT = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id && cc.trangThai == "Đã giao" && cc.daThanhToan == true).ToList();
             List<tb_DonHang_SanPham> donhangsanpham = data.tb_DonHang_SanPhams.ToList();
             List<tb_SanPham> sanpham = data.tb_SanPhams.ToList();
 
@@ -97,6 +97,23 @@ namespace TECHNOLOGY_SHOP.Controllers
             {
                 sanpham.iSoluong += 1;
                 return Redirect(strURL);
+            }
+        }
+
+        public ActionResult Muangay(int id, string strURL)
+        {
+            List<Giohang> lstGiohang = Laygiohang();
+            Giohang sanpham = lstGiohang.Find(p => p.idSP == id);
+            if (sanpham == null)
+            {
+                sanpham = new Giohang(id);
+                lstGiohang.Add(sanpham);
+                return Redirect(strURL);
+            }
+            else
+            {
+                sanpham.iSoluong += 1;
+                return Redirect(@Url.Action("GioHang", "GioHang"));
             }
         }
 
@@ -204,12 +221,12 @@ namespace TECHNOLOGY_SHOP.Controllers
             tb_SanPham s = new tb_SanPham();
 
             List<Giohang> gh = Laygiohang();
-            var ngaygiao = String.Format("{0:MM/đ/yyyy}", collection["ngayGiao"]);
+            var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["ngayGiao"]);
 
             dh.idTaiKhoan = kh.idTaiKhoan;
             dh.ngayDat = DateTime.Now;
             dh.ngayGiao = DateTime.Parse(ngaygiao);
-            dh.daGiao = false;
+            dh.trangThai = "Chờ xử lý";
             dh.daThanhToan = false;
 
             data.tb_DonHangs.InsertOnSubmit(dh);

@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>LichSuDatHang</h2>
+<h5><br /><br /><br />Danh sách đặt hàng</h5>
+<hr />
 
 <div class="container">
 
@@ -25,9 +26,8 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="container-fluid py-4">
-                <h4 class="text-center text-uppercase">DAT HANG  List</h4>
-                <table class="table table-success table-striped">
-                    <thead class="bg-info text-white">
+                <table class="table table-striped">
+                    <thead class="text-white">
                         <tr>
                             <th style="color: black">Ngày đặt</th>
                             <th style="color: black">Sản phẩm</th>
@@ -54,9 +54,8 @@
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="container-fluid py-4">
-                <h4 class="text-center text-uppercase">Employee List</h4>
-                <table class="table table-success table-striped">
-                    <thead class="bg-info text-white">
+                <table class="table table-striped">
+                    <thead class="text-white">
                         <tr>
                             <th style="color: black">Ngày đặt</th>
                             <th style="color: black">Sản phẩm</th>
@@ -94,9 +93,8 @@
         </div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <div class="container-fluid py-4">
-                <h4 class="text-center text-uppercase">Employee List</h4>
-                <table class="table table-success table-striped">
-                    <thead class="bg-info text-white">
+                <table class="table table-striped">
+                    <thead class="text-white">
                         <tr>
                             <th style="color: black">Ngày đặt</th>
                             <th style="color: black">Sản phẩm</th>
@@ -132,62 +130,61 @@
                 </table>
             </div>
         </div>
-            <div class="tab-pane fade" id="hoantat" role="tabpanel" aria-labelledby="hoantat-tab">
-                <div class="container-fluid py-4">
-                    <h4 class="text-center text-uppercase">Employee List</h4>
-                    <table class="table table-success table-striped">
-                        <thead class="bg-info text-white">
+        <div class="tab-pane fade" id="hoantat" role="tabpanel" aria-labelledby="hoantat-tab">
+            <div class="container-fluid py-4">
+                <table class="table table-striped">
+                    <thead class="text-white">
+                        <tr>
+                            <th style="color: black">Ngày đặt</th>
+                            <th style="color: black">Sản phẩm</th>
+                            <th style="color: black">Số lượng</th>
+                            <th style="color: black">Đơn giá</th>
+                            <th style="color: black">Thành tiền</th>
+                            <th style="color: black">Trạng thái</th>
+                            <th style="color: black">Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.lstAllhoantat)
+                        {
                             <tr>
-                                <th style="color: black">Ngày đặt</th>
-                                <th style="color: black">Sản phẩm</th>
-                                <th style="color: black">Số lượng</th>
-                                <th style="color: black">Đơn giá</th>
-                                <th style="color: black">Thành tiền</th>
-                                <th style="color: black">Trạng thái</th>
-                                <th style="color: black">Trạng thái</th>
+                                <td>@String.Format("{0:dd/MM/yyyy}", @item.donhang.ngayDat)</td>
+                                <td>@item.sanpham.tenSP</td>
+                                <td>@item.donhangsanpham.soLuong</td>
+                                <td>@String.Format("{0:0,0}", @item.donhangsanpham.donGia)₫ </td>
+                                <td>@String.Format("{0:0,0}", @item.donhangsanpham.thanhTien)₫ </td>
+                                <td>
+                                    @if (@item.donhang.daGiao == true)
+                                    {
+                                        <p>Đã giao</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Chưa giao</p>
+                                    }
+                                </td>
+                                <td>
+                                    @if (@item.donhang.daThanhToan == true)
+                                    {
+                                        <p>Đã thanh toán</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Chưa thanh toán</p>
+                                    }
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in ViewBag.lstAllhoantat)
-                            {
-                                <tr>
-                                    <td>@String.Format("{0:dd/MM/yyyy}", @item.donhang.ngayDat)</td>
-                                    <td>@item.sanpham.tenSP</td>
-                                    <td>@item.donhangsanpham.soLuong</td>
-                                    <td>@String.Format("{0:0,0}", @item.donhangsanpham.donGia)₫ </td>
-                                    <td>@String.Format("{0:0,0}", @item.donhangsanpham.thanhTien)₫ </td>
-                                    <td>
-                                        @if (@item.donhang.daGiao == true)
-                                        {
-                                            <p>Đã giao</p>
-                                        }
-                                        else
-                                        {
-                                            <p>Chưa giao</p>
-                                        }
-                                    </td>
-                                    <td>
-                                        @if (@item.donhang.daThanhToan == true)
-                                        {
-                                            <p>Đã thanh toán</p>
-                                        }
-                                        else
-                                        {
-                                            <p>Chưa thanh toán</p>
-                                        }
-                                    </td>
-                                </tr>
 
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
-
-
-
-
-
     </div>
-    
+
+
+
+
+
+</div>
+

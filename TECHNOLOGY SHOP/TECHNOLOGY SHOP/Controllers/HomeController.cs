@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,15 +15,15 @@ namespace TECHNOLOGY_SHOP.Controllers
         public ActionResult Index()
         {
             var allSanPham1 = from sanpham in data.tb_SanPhams where sanpham.idLoaiSP == 10 & sanpham.trangThai == true select sanpham;
-            ViewBag.lst1 = allSanPham1;
+            ViewBag.lst1 = allSanPham1.Take(5);
             var allSanPham2 = from sanpham in data.tb_SanPhams where sanpham.idLoaiSP == 25 & sanpham.trangThai == true select sanpham;
-            ViewBag.lst2 = allSanPham2;
+            ViewBag.lst2 = allSanPham2.Take(5);
             var allSanPham3 = from sanpham in data.tb_SanPhams where sanpham.idLoaiSP == 26 & sanpham.trangThai == true select sanpham;
-            ViewBag.lst3 = allSanPham3;
+            ViewBag.lst3 = allSanPham3.Take(5);
             var loaisanpham = from loai in data.tb_LoaiSanPhams select loai;
             ViewBag.loaisanphamAll = loaisanpham;
             var hangsanpham = from hang in data.tb_HangSanPhams select hang;
-            ViewBag.hangsanphamAll = hangsanpham;
+            ViewBag.hangsanphamAll = hangsanpham.Take(9);
             return View(allSanPham1);
         }
 
@@ -41,5 +42,21 @@ namespace TECHNOLOGY_SHOP.Controllers
             ViewBag.loaisanphamAll = sanpham;
             return View(sanpham);
         }
+
+        public ActionResult SanPhamByTen(string id)
+        {
+            var links = from l in data.tb_SanPhams
+                        select l;
+
+            if (!String.IsNullOrEmpty(id))
+            {
+                links = links.Where(s => s.tenSP.Contains(id));
+            }
+            var sanpham = from sp in data.tb_SanPhams where sp.tenSP.Contains("pro") select sp;
+            ViewBag.sanpham = sanpham;
+            return View(links);
+
+        }
+
     }
 }
