@@ -1,229 +1,351 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TECHNOLOGY SHOP</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/admin/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/admin/assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="~/admin/assets/images/images.jpg" />
 </head>
 <body>
-    <br />
-    <div class="header"></div>
-    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-    <label for="openSidebarMenu" class="sidebarIconToggle">
-        <div class="spinner diagonal part-1"></div>
-        <div class="spinner horizontal"></div>
-        <div class="spinner diagonal part-2"></div>
-    </label>
-    <div id="sidebarMenu">
-        <ul class="sidebarMenuInner">
-            <li>
-                Xin Chào! <span>
-                    @if (ViewBag.tenDangNhap != null)
-                    {
-                        <a asp-controller="Accounts" asp-action="Edit">@Session["tenDangNhap"]</a>
-                        <br />
-                        <form method="get" action="@Url.Action("Logout", "TaiKhoan")">
+    <div class="container-scroller">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+                <a class="sidebar-brand brand-logo" href="#"><img src="~/admin/assets/images/logo.png" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo-mini" href="#"><img src="~/admin/assets/images/logo-mini.svg" alt="logo" /></a>
+            </div>
+            <ul class="nav">
+                <li class="nav-item profile">
+                    <div class="profile-desc">
+                        <div class="profile-pic">
+                            <div class="count-indicator">
+                                <img class="img-xs rounded-circle " src="~/admin/assets/images/faces/face15.jpg" alt="">
+                                <span class="count bg-success"></span>
+                            </div>
+                            <div class="profile-name">
+                                <h5 class="mb-0 font-weight-normal">
+                                    @Session["tenDangNhap"]
+                                </h5>
+                                <span>Gold Member</span>
+                            </div>
+                        </div>
+                        <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
+                            <a href="#" class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-settings text-primary"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1 text-small">Thông tin tài khoản</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-onepassword  text-info"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1 text-small">Đổi mật khẩu</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item nav-category">
+                    <span class="nav-link">Menu</span>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-area="Admin" asp-controller="Invoices" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-chart-bar"></i>
+                        </span>
+                        <span class="menu-title">   @Html.ActionLink("QUẢN LÍ TÀI KHOẢN", "Index", "TaiKhoan")</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-area="Admin" asp-controller="Accounts" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-account-box"></i>
+                        </span>
+                        <span class="menu-title">@Html.ActionLink("QUẢN LÍ HÃNG SẢN PHẨM", "Index", "HangSanPham")</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-area="Admin" asp-controller="Products" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-book-open-variant"></i>
+                        </span>
+                        <span class="menu-title">@Html.ActionLink("QUẢN LÍ LOẠI SẢN PHẨM", "Index", "LoaiSanPham")</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-area="Admin" asp-controller="ProductTypes" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-border-color"></i>
+                        </span>
+                        <span class="menu-title">@Html.ActionLink("QUẢN LÍ SẢN PHẨM", "Index", "SanPham")</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-area="Admin" asp-controller="ProductTypes" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-border-color"></i>
+                        </span>
+                        <span class="menu-title">@Html.ActionLink("QUẢN LÍ ĐƠN HÀNG", "Index", "DonHang")</span>
+                    </a>
+                </li>
 
-                            <input type="submit" class="btn btn-warning" value="Đăng xuất">
-                        </form>
-                    }
-                    else
-                    {
-                        <a asp-controller="Home" asp-action="Login" class="account-link">Đăng nhập</a>
-                    }
+            </ul>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:../../partials/_navbar.html -->
+            <nav class="navbar p-0 fixed-top d-flex flex-row">
+                <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="~/admin/assets/images/logo-mini.svg" alt="logo" /></a>
+                </div>
+                <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
+                    <ul class="navbar-nav w-100">
+                        <li class="nav-item w-100">
+                            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                                <input type="text" class="form-control" placeholder="Search products">
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav navbar-nav-right">
+                        <li class="nav-item dropdown d-none d-lg-block">
+                            <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
+                                <h6 class="p-3 mb-0">Projects</h6>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-file-outline text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">Software Development</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-web text-info"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">UI Development</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-layers text-danger"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">Software Testing</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <p class="p-3 mb-0 text-center">See all projects</p>
+                            </div>
+                        </li>
+                        <li class="nav-item nav-settings d-none d-lg-block">
+                            <a class="nav-link" href="#">
+                                <i class="mdi mdi-view-grid"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown border-left">
+                            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                                <i class="mdi mdi-email"></i>
+                                <span class="count bg-success"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                                <h6 class="p-3 mb-0">Messages</h6>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <img src="~/admin/assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
+                                        <p class="text-muted mb-0"> 1 Minutes ago </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <img src="~/admin/assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
+                                        <p class="text-muted mb-0"> 15 Minutes ago </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <img src="~/admin/assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
+                                        <p class="text-muted mb-0"> 18 Minutes ago </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <p class="p-3 mb-0 text-center">4 new messages</p>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown border-left">
+                            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                                <i class="mdi mdi-bell"></i>
+                                <span class="count bg-danger"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                                <h6 class="p-3 mb-0">Notifications</h6>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-calendar text-success"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Event today</p>
+                                        <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event today </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-settings text-danger"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Settings</p>
+                                        <p class="text-muted ellipsis mb-0"> Update dashboard </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-link-variant text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Launch Admin</p>
+                                        <p class="text-muted ellipsis mb-0"> New admin wow! </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <p class="p-3 mb-0 text-center">See all notifications</p>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                                <div class="navbar-profile">
+                                    <img class="img-xs rounded-circle" src="~/admin/assets/images/faces/face15.jpg" alt="">
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">
 
-                </span>
-            </li>
-            <li>@Html.ActionLink("QUẢN LÍ TÀI KHOẢN", "Index", "TaiKhoan")</li>
-            <li>@Html.ActionLink("QUẢN LÍ HÃNG SẢN PHẨM", "Index", "HangSanPham")</li>
-            <li>@Html.ActionLink("QUẢN LÍ LOẠI SẢN PHẨM", "Index", "LoaiSanPham")</li>
-            <li>@Html.ActionLink("QUẢN LÍ SẢN PHẨM", "Index", "SanPham")</li>
-            <li>@Html.ActionLink("QUẢN LÍ ĐƠN HÀNG SẢN PHẨM", "Index", "DonHang")</li>
+                                        @Session["tenDangNhap"]
 
-        </ul>
+                                    </p>
+                                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                                <h6 class="p-3 mb-0">Profile</h6>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-settings text-success"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Cài đặt tài khoản</p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-logout text-danger"></i>
+                                        </div>
+                                    </div>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">
+                                            <form method="get" action="@Url.Action("Logout", "TaiKhoan")">
+                                                <input type="submit" class="btn btn-dark" value="Đăng xuất">
+                                            </form>
+                                        </p>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <p class="p-3 mb-0 text-center">Cài đặt nâng cao</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                        <span class="mdi mdi-format-line-spacing"></span>
+                    </button>
+                </div>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @RenderBody()
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:../../partials/_footer.html -->
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Admin Layout Application</p>
-        </footer>
-    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/admin/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="~/admin/assets/js/off-canvas.js"></script>
+    <script src="~/admin/assets/js/hoverable-collapse.js"></script>
+    <script src="~/admin/assets/js/misc.js"></script>
+    <script src="~/admin/assets/js/settings.js"></script>
+    <script src="~/admin/assets/js/todolist.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    @RenderSection("upload", required: false)
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
 </body>
 </html>
-<style>
-    html, body {
-        overflow-x: hidden;
-        height: 100%;
-    }
-
-    body {
-        background: #FFFAF0;
-        padding: 0;
-        margin: 0;
-        font-family: 'Varela Round', sans-serif;
-    }
-
-    .body-content {
-        padding-top: 60px;
-    }
-
-    .header {
-        display: block;
-        margin: 0 auto;
-        width: 100%;
-        max-width: 100%;
-        box-shadow: none;
-        background-color: #FC466B;
-        position: fixed;
-        height: 60px !important;
-        overflow: hidden;
-        z-index: 10;
-    }
-
-    .main {
-        margin: 0 auto;
-        display: block;
-        height: 100%;
-        margin-top: 60px;
-    }
-
-    .mainInner {
-        display: table;
-        height: 100%;
-        width: 100%;
-        text-align: center;
-    }
-
-        .mainInner div {
-            display: table-cell;
-            vertical-align: middle;
-            font-size: 3em;
-            font-weight: bold;
-            letter-spacing: 1.25px;
-        }
-
-    #sidebarMenu {
-        height: 100%;
-        position: fixed;
-        left: 0;
-        width: 250px;
-        margin-top: 60px;
-        transform: translateX(-250px);
-        transition: transform 250ms ease-in-out;
-        background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
-    }
-
-    .sidebarMenuInner {
-        margin: 0;
-        padding: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.10);
-    }
-
-        .sidebarMenuInner li {
-            list-style: none;
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: bold;
-            padding: 20px;
-            cursor: pointer;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-        }
-
-            .sidebarMenuInner li span {
-                display: block;
-                font-size: 14px;
-                color: rgba(255, 255, 255, 0.50);
-            }
-
-            .sidebarMenuInner li a {
-                color: #fff;
-                text-transform: uppercase;
-                font-weight: bold;
-                cursor: pointer;
-                text-decoration: none;
-            }
-
-    input[type="checkbox"]:checked ~ #sidebarMenu {
-        transform: translateX(0);
-    }
-
-    input[type=checkbox] {
-        transition: all 0.3s;
-        box-sizing: border-box;
-        display: none;
-    }
-
-    .sidebarIconToggle {
-        transition: all 0.3s;
-        box-sizing: border-box;
-        cursor: pointer;
-        position: absolute;
-        z-index: 99;
-        height: 100%;
-        width: 100%;
-        top: 22px;
-        left: 15px;
-        height: 22px;
-        width: 22px;
-    }
-
-    .spinner {
-        transition: all 0.3s;
-        box-sizing: border-box;
-        position: absolute;
-        height: 3px;
-        width: 100%;
-        background-color: #fff;
-    }
-
-    .horizontal {
-        transition: all 0.3s;
-        box-sizing: border-box;
-        position: relative;
-        float: left;
-        margin-top: 3px;
-    }
-
-    .diagonal.part-1 {
-        position: relative;
-        transition: all 0.3s;
-        box-sizing: border-box;
-        float: left;
-    }
-
-    .diagonal.part-2 {
-        transition: all 0.3s;
-        box-sizing: border-box;
-        position: relative;
-        float: left;
-        margin-top: 3px;
-    }
-
-    input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
-        transition: all 0.3s;
-        box-sizing: border-box;
-        opacity: 0;
-    }
-
-    input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
-        transition: all 0.3s;
-        box-sizing: border-box;
-        transform: rotate(135deg);
-        margin-top: 8px;
-    }
-
-    input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
-        transition: all 0.3s;
-        box-sizing: border-box;
-        transform: rotate(-135deg);
-        margin-top: -9px;
-    }
-</style>

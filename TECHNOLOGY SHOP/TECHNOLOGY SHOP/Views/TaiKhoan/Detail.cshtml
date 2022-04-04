@@ -5,14 +5,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Detail</h2>
-
-<div>
-    <h4>tb_TaiKhoan</h4>
-    <hr />
-    <dl class="dl-horizontal">
+<h2 style="text-align:center">THÔNG TIN TÀI KHOẢN</h2>
+<table class="table">
+    <tr>
         <dt>
-            @Html.DisplayNameFor(model => model.tenDangNhap)
+            Tên Đăng Nhập
         </dt>
 
         <dd>
@@ -20,7 +17,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.matKhau)
+            Mật Khẩu
         </dt>
 
         <dd>
@@ -28,7 +25,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.hoTen)
+            Họ Tên
         </dt>
 
         <dd>
@@ -36,7 +33,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.soDienThoai)
+            Số Điện dtoại
         </dt>
 
         <dd>
@@ -44,7 +41,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.diaChi)
+            Địa Chỉ
         </dt>
 
         <dd>
@@ -52,7 +49,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.eMail)
+            Email
         </dt>
 
         <dd>
@@ -60,16 +57,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.laAdmin)
+            Quyền Admin
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.laAdmin)
         </dd>
 
-    </dl>
-</div>
+    </tr>
+</table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idTaiKhoan }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Trở lại", "Index")
 </p>
