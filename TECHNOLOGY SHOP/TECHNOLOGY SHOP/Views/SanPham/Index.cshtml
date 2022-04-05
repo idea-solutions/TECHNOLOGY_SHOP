@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>DANH SÁCH SẢN PHẨM</h2>
@@ -68,8 +68,8 @@
     </td>
     <td>
         @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.idSP }) |
-        @Html.ActionLink("Chi tiết", "Detail", new { id = item.idSP }) |
-        @Html.ActionLink("Xóa", "Delete", new { id = item.idSP })
+        @Html.ActionLink("Chi tiết", "Detail", new { id = item.idSP }) @*|
+        @Html.ActionLink("Xóa", "Delete", new { id = item.idSP })*@
     </td>
 </tr>
 }

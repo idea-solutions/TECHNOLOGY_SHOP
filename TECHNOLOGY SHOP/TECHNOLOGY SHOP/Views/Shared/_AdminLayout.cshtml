@@ -24,7 +24,7 @@
         <!-- partial:../../partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-                <a class="sidebar-brand brand-logo" href="#"><img src="~/admin/assets/images/logo.png" alt="logo" /></a>
+                <a class="sidebar-brand brand-logo" href="@Url.Action("Index","Home")"><img src="~/admin/assets/images/logo.png" alt="logo" /></a>
                 <a class="sidebar-brand brand-logo-mini" href="#"><img src="~/admin/assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <ul class="nav">
@@ -80,6 +80,7 @@
                         <span class="menu-title">   @Html.ActionLink("QUẢN LÍ TÀI KHOẢN", "Index", "TaiKhoan")</span>
                     </a>
                 </li>
+
                 <li class="nav-item menu-items">
                     <a class="nav-link" asp-area="Admin" asp-controller="Accounts" asp-action="Index">
                         <span class="menu-icon">
@@ -109,10 +110,17 @@
                         <span class="menu-icon">
                             <i class="mdi mdi-border-color"></i>
                         </span>
-                        <span class="menu-title">@Html.ActionLink("QUẢN LÍ ĐƠN HÀNG", "Index", "DonHang")</span>
+                        <span class="menu-title">@Html.ActionLink("LỊCH SỬ ĐẶT HÀNG", "LichSuDatHangAdmin", "GioHang")</span>
                     </a>
                 </li>
-
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-area="Admin" asp-controller="ProductTypes" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-border-color"></i>
+                        </span>
+                        <span class="menu-title">@Html.ActionLink("CHỈNH SỬA ĐƠN HÀNG", "Index", "DonHang")</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- partial -->
@@ -343,6 +351,7 @@
     <script src="~/admin/assets/js/misc.js"></script>
     <script src="~/admin/assets/js/settings.js"></script>
     <script src="~/admin/assets/js/todolist.js"></script>
+    @RenderSection("upload", required: false)
 
     <!-- endinject -->
     <!-- Custom js for this page -->

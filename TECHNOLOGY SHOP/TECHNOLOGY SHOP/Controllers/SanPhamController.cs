@@ -130,5 +130,15 @@ namespace TECHNOLOGY_SHOP.Controllers
             data.SubmitChanges();
             return RedirectToAction("Index");
         }
+
+        public string ProcessUpload(HttpPostedFileBase file)
+        {
+            if (file == null)
+            {
+                return "";
+            }
+            file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
+            return "/Content/images/" + file.FileName;
+        }
     }
 }

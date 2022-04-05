@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "LichSuDatHangAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Lịch sử đặt hàng</h2>
+
+<table class="table table-striped">
+    <thead class="text-white">
+        <tr>
+            <th style="color: black">Ngày đặt</th>
+            <th style="color: black">Sản phẩm</th>
+            <th style="color: black">Số lượng</th>
+            <th style="color: black">Đơn giá</th>
+            <th style="color: black">Thành tiền</th>
+            <th style="color: black">Trạng thái</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@String.Format("{0:dd/MM/yyyy}", @item.donhang.ngayDat)</td>
+                <td>@item.sanpham.tenSP</td>
+                <td>@item.donhangsanpham.soLuong</td>
+                <td>@String.Format("{0:0,0}", @item.donhangsanpham.donGia)₫ </td>
+                <td>@String.Format("{0:0,0}", @item.donhangsanpham.thanhTien)₫ </td>
+                <td>@item.donhang.trangThai</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+

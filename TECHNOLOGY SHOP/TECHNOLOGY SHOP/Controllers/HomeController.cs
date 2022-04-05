@@ -14,11 +14,12 @@ namespace TECHNOLOGY_SHOP.Controllers
         MyDataDataContext data = new MyDataDataContext();
         public ActionResult Index()
         {
-            var allSanPham1 = from sanpham in data.tb_SanPhams where sanpham.idLoaiSP == 10 & sanpham.trangThai == true select sanpham;
+            var allSanPham1 = from sanpham in data.tb_SanPhams where sanpham.idLoaiSP == 10 select sanpham;
             ViewBag.lst1 = allSanPham1.Take(5);
-            var allSanPham2 = from sanpham in data.tb_SanPhams where sanpham.idLoaiSP == 25 & sanpham.trangThai == true select sanpham;
+            var allSanPham2 = from sanpham in data.tb_SanPhams where sanpham.idLoaiSP == 25 select sanpham;
             ViewBag.lst2 = allSanPham2.Take(5);
-            var allSanPham3 = from sanpham in data.tb_SanPhams where sanpham.idLoaiSP == 26 & sanpham.trangThai == true select sanpham;
+            Session["idLoai"] = allSanPham2.First().idLoaiSP;
+            var allSanPham3 = from sanpham in data.tb_SanPhams where sanpham.idLoaiSP == 26 select sanpham;
             ViewBag.lst3 = allSanPham3.Take(5);
             var loaisanpham = from loai in data.tb_LoaiSanPhams select loai;
             ViewBag.loaisanphamAll = loaisanpham;
@@ -54,6 +55,16 @@ namespace TECHNOLOGY_SHOP.Controllers
             }
             var sanpham = from sp in data.tb_SanPhams where sp.tenSP.Contains(idSPP) select sp;
             ViewBag.sanpham = sanpham;
+            return View(links);
+        }
+
+        public ActionResult SanPhamByGia(int giatu, int giaden)
+        {
+            int idLoai = (int)Session["idLoai"];
+            var links = from l in data.tb_SanPhams
+                        select l;
+                links = links.Where(s => s.giaBan >= giatu && s.giaBan <= giaden && s.idLoaiSP == idLoai);
+
             return View(links);
         }
     }

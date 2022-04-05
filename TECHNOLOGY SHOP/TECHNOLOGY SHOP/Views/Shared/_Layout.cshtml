@@ -22,8 +22,8 @@
                             @using (Html.BeginForm("SanPhamByTen", "Home", FormMethod.Get)) // -- phần thay đổi
                             {
                                 <div style="display:flex">
-                                    @Html.Editor("id", new { htmlAttributes = new { @placeholder = "Nhập tên sản phẩm", @class = "form-control me-2", @tyle = "search" } })
-                                    <input style="margin-left:8px" type="submit" class="btn btn-outline-success" value="Tìm" />
+                                    @Html.Editor("idSPP", new { htmlAttributes = new { @placeholder = "Nhập tên sản phẩm", @class = "form-control me-2", @tyle = "search" } })
+                                    <input type="submit" class="btn btn-outline-success" value="Tìm" />
                                 </div>
                             }
 
@@ -34,7 +34,59 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Trợ giúp</a>
+                            <!-- Button trigger modal -->
+                            <button type="button" style="margin-left:1rem" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                Trợ giúp
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Trợ giúp</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div>
+                                                            <p>
+                                                                <b>Liên hệ hỗ trợ</b>(gọi miễn phí)
+                                                            </p>
+                                                            <p>Gọi mua: 0964.123.123 (7:30 - 22:00)</p>
+                                                            <p>Kỹ thuật: 0964.124.124 (7:30 - 22:00)</p>
+                                                            <p>Khiếu nại: 0964.125.125 (9:00 - 18:00)</p>
+                                                            <p>Bảo hành: 0964.126.126 (9:00 - 18:00)</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div>
+                                                            <p>
+                                                                <b>Địa chỉ mua hàng</b>
+                                                            </p>
+                                                            <p>123 Đ.Nguyễn Văn A, Phường 1, Q.1, Thành phố Hồ Chí Minh</p>
+                                                            <p>123 Đ.Nguyễn Văn A, Phường 1, Q.Thanh Xuân, Hà Nội</p>
+                                                            <p>123 Đ.Nguyễn Văn A, Phường 1, Sơn Trà, Đà Nẵng</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <p>
+                                                            <b>Truyền thông</b>
+                                                        </p>
+                                                        <a href="https://www.facebook.com/" style="text-decoration:none" target="_blank" class="link-secondary"><img src="~/Content/images/logo_fb.png" style="height:2rem; width:2rem" /><b> facebook.com/technologyshop123</b></a>
+                                                        <hr />
+                                                        <a href="https://mail.google.com/" style="text-decoration:none" target="_blank" class="link-secondary"><img src="~/Content/images/logo_gg.png" style="height:2rem; width:2rem" /><b> cskh.tnlg@gmail.com</b></a>
+                                                        <hr />
+                                                        <a href="https://www.instagram.com/" style="text-decoration:none" target="_blank" class="link-secondary"><img src="~/Content/images/logo_it.png" style="height:2rem; width:2rem" /><b> @@technology123</b></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item">
                             @Html.Partial("~/Views/TaiKhoan/LoginPartial.cshtml")

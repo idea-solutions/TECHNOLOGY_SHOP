@@ -496,3 +496,32 @@ C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TE
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\obj\Debug\TECHNOLOGY SHOP.csproj.CopyComplete
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\obj\Debug\TECHNOLOGY SHOP.dll
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\obj\Debug\TECHNOLOGY SHOP.pdb
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.AspNetCore.Http.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.Extensions.ObjectPool.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.Extensions.Options.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Buffers.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.ComponentModel.Annotations.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Memory.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Numerics.Vectors.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Text.Encodings.Web.dll
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.AspNetCore.Http.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.Extensions.ObjectPool.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.Extensions.Options.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Buffers.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Memory.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Numerics.Vectors.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Text.Encodings.Web.xml

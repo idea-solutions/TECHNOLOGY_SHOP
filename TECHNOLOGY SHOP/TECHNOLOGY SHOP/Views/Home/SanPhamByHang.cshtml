@@ -52,10 +52,8 @@
                         {
                             <p>(@item.soNguoiDanhGia)</p>
                         }
-                        <br />
                         <b style="font-size: 14px; color: red">@String.Format("{0:0,0}", item.giaBan)₫</b>
                         <hr />
-                        <a href="@Url.Action("ThemGioHang", "GioHang",new { @id = item.idSP, @strURL = Request.Url.ToString() })" class="btn btn-primary">Đặt mua</a>
                     </div>
                 </div>
             </div>

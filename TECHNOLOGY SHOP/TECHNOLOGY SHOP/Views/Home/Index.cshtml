@@ -54,11 +54,11 @@
                 @foreach (var item in ViewBag.hangsanphamAll)
                 {
                     <a style="text-decoration: none; text-align: center" href="@Url.Action("SanPhamByHang", "Home",new { @id = item.idHang})" class="col-6">
-                        <div class="p-3 border btn-group-lg"><b>@item.tenHang</b></div>
+                        <div class="p-3 border btn-outline-danger"><b>@item.tenHang</b></div>
                     </a>
                 }
                 <a style="text-decoration: none; text-align: center" href="@Url.Action("SanPhamByTen", "Home",new { @id = ""})" class="col-6">
-                    <div class="p-3 border btn-group-lg"><b>KHÁC...</b></div>
+                    <div class="p-3 border btn-outline-danger"><b>KHÁC...</b></div>
                 </a>
             </div>
         </div>
@@ -126,11 +126,8 @@
                         {
                             <p>(@item.soNguoiDanhGia)</p>
                         }
-
-                        <br />
                         <b style="font-size: 14px; color: red">@String.Format("{0:0,0}", item.giaBan)₫</b>
                         <hr />
-                        <a href="@Url.Action("Themgiohang", "Giohang",new { @id = item.idSP, @strURL = Request.Url.ToString() })" class="btn btn-primary">Mua ngay</a>
                     </div>
                 </div>
             </div>
@@ -199,12 +196,8 @@
                         {
                             <p>(@item.soNguoiDanhGia)</p>
                         }
-                        <br />
                         <b style="font-size: 14px; color: red">@String.Format("{0:0,0}", item.giaBan)₫</b>
                         <hr />
-                        <a href="@Url.Action("Muangay", "GioHang",new { @id = item.idSP, @strURL = Request.Url.ToString() })" class="btn btn-primary">
-                            Đặt mua
-                        </a>
                     </div>
                 </div>
             </div>
@@ -272,10 +265,8 @@
                         {
                             <p>(@item.soNguoiDanhGia)</p>
                         }
-                        <br />
                         <b style="font-size: 14px; color: red">@String.Format("{0:0,0}", item.giaBan)₫</b>
                         <hr />
-                        <a href="@Url.Action("ThemGioHang", "GioHang",new { @id = item.idSP, @strURL = Request.Url.ToString() })" class="btn btn-primary">Đặt mua</a>
                     </div>
                 </div>
             </div>

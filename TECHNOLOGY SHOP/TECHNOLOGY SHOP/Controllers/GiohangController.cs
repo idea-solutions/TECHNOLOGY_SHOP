@@ -23,6 +23,25 @@ namespace TECHNOLOGY_SHOP.Controllers
             return lstGiohang;
         }
 
+        public ActionResult LichSuDatHangAdmin()
+        {
+            List<tb_DonHang> donhang = data.tb_DonHangs.ToList();
+            List<tb_DonHang_SanPham> donhangsanpham = data.tb_DonHang_SanPhams.ToList();
+            List<tb_SanPham> sanpham = data.tb_SanPhams.ToList();
+            var lstAll = from e in donhang
+                         join d in donhangsanpham on e.idDonHang equals d.idDonHang into table1
+                         from d in table1.ToList()
+                         join i in sanpham on d.idSP equals i.idSP into table2
+                         from i in table2.ToList()
+                         select new ViewModel
+                         {
+                             donhang = e,
+                             donhangsanpham = d,
+                             sanpham = i
+                         };
+            return View(lstAll);
+        }
+
         public ActionResult LichSuDatHang(int id)
         {
             List<tb_DonHang> donhang = data.tb_DonHangs.Where(cc => cc.idTaiKhoan == id).ToList();
@@ -263,12 +282,22 @@ namespace TECHNOLOGY_SHOP.Controllers
             data.SubmitChanges();
             Session["Giohang"] = null;
             return RedirectToAction("XacnhanDonhang", "GioHang");
+        }
 
+        public ActionResult Thanhtoan()
+        {
+            return View();
         }
 
         public ActionResult XacnhanDonhang()
         {
+            tb_TaiKhoan tk = (tb_TaiKhoan)Session["Taikhoan"];
+            Session["htThanhToan"] = tk.hoTen;
+            Session["sdtThanhToan"] = tk.soDienThoai;
+            Session["timeThanhToan"] = DateTime.Now.Date;
             return View();
         }
+
+
     }
 }

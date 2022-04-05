@@ -11,6 +11,30 @@
     </h5>
 </div>
 
+@using (Html.BeginForm("SanPhamByGia", "Home", FormMethod.Get))
+{
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h6>Giá từ</h6>
+            @Html.Editor("giatu", new { htmlAttributes = new { @class = "form-control me-2" } })
+        </div>
+        <div class="col">
+            <h6>Giá đến</h6>
+            @Html.Editor("giaden", new { htmlAttributes = new { @class = "form-control me-2" } })
+        </div>
+        <div class="col">
+            <input style="margin-top:27px" type="submit" class="btn btn-primary" value="Tìm kiếm" />
+        </div>
+    </div>
+    <hr />
+    <br />
+</div>
+}
+
+
+
+
 <div class="container">
     <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
         @foreach (var item in ViewBag.loaisanphamAll)
@@ -52,10 +76,8 @@
                         {
                             <p>(@item.soNguoiDanhGia)</p>
                         }
-                        <br />
                         <b style="font-size: 14px; color: red">@String.Format("{0:0,0}", item.giaBan)₫</b>
                         <hr />
-                        <a href="@Url.Action("ThemGioHang", "GioHang",new { @id = item.idSP, @strURL = Request.Url.ToString() })" class="btn btn-primary">Đặt mua</a>
                     </div>
                 </div>
             </div>
