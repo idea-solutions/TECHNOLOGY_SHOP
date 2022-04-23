@@ -491,7 +491,6 @@ C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TE
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Newtonsoft.Json.xml
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Antlr3.Runtime.pdb
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\obj\Debug\TECHNOLOGY SHOP.csproj.AssemblyReference.cache
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\obj\Debug\TECHNOLOGY SHOP.csproj.CoreCompileInputs.cache
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\obj\Debug\TECHNOLOGY SHOP.csproj.CopyComplete
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\obj\Debug\TECHNOLOGY SHOP.dll
@@ -525,3 +524,4 @@ C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TE
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Numerics.Vectors.xml
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\bin\System.Text.Encodings.Web.xml
+C:\Users\nguye\OneDrive\Máy tính\TECHNOLOGY\TECHNOLOGY_SHOP\TECHNOLOGY SHOP\TECHNOLOGY SHOP\obj\Debug\TECHNOLOGY SHOP.csproj.AssemblyReference.cache
