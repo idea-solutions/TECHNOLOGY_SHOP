@@ -64,13 +64,6 @@ namespace TECHNOLOGY_SHOP.Controllers
             return View(lstAll);
         }
 
-
-
-
-
-
-
-
         public ActionResult Edit(int id)
         {
             ViewBag.lstTrangThai = new SelectList(data.tb_DonHangs, "idDonHang", "trangThai");
