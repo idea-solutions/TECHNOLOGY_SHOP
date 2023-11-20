@@ -1016,11 +1016,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Models\MyData.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>MyData.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Content\bs\css\bootstrap-grid.css.map" />
     <Content Include="Content\bs\css\bootstrap-grid.min.css.map" />
     <Content Include="Content\bs\css\bootstrap-grid.rtl.css.map" />
@@ -1172,6 +1167,11 @@
     <Content Include="admin\assets\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
     <Content Include="admin\assets\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="admin\assets\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Models\MyData.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MyData.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Models\MyData.dbml.layout">
       <DependentUpon>MyData.dbml</DependentUpon>
     </None>
